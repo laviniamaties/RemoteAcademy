@@ -20,10 +20,9 @@ CONSTRAINT [PK_Donors] PRIMARY KEY ([DonorID]));
 --Tabel 2 : Blood_Types 
 
 CREATE TABLE [Blood_Type](
-	[Blood_TypeID] uniqueidentifier NOT NULL,
 	[DonorID] uniqueidentifier NOT NULL,
 	[Description] nvarchar(150) NOT NULL,
-CONSTRAINT [PK_Blood_Type] PRIMARY KEY ([Blood_TypeID]),
+CONSTRAINT [PK_Blood_Type] PRIMARY KEY ([DonorID]),
 CONSTRAINT [FK_Blood_Type_Donors] FOREIGN KEY ([DonorID])
     REFERENCES [Donors]([DonorID]));
 
@@ -91,17 +90,17 @@ CONSTRAINT [FK_Blood_Bank_Colection_Points] FOREIGN KEY ([Colection_PointID])
   SELECT * 
  FROM Donors
  
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '7C9ADF58-2C0F-4471-9483-03296CDEBD8E', 'BI Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'A8E61FD8-013E-4618-A522-0FD61DC11863', 'BI Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'F7730A8A-9464-4EA9-9DCD-135AE4795ED3', '0 Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '1D77070D-5EA0-4FB7-BD95-229337B8A794', '0 Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'A787074D-6BF4-4B78-8380-499E86CADC09', 'BII Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '46816FDC-318D-492C-A6D4-507927FF7B02', 'BIII Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'C11956E7-B7F9-437F-B5F1-60A677756999', 'AB Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '6DFC5B96-30BE-4D7A-B76B-A1444D7F9FF4', 'AI Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '1C5404B7-0E60-45D7-BDCB-B672E40291E7', 'AII Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '0A1A5732-DC60-440B-B34F-D1CD412F946A', 'ABIV Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'C367660F-DC4A-477A-B363-FB112EFF7855', 'BI Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('7C9ADF58-2C0F-4471-9483-03296CDEBD8E', 'BI Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('A8E61FD8-013E-4618-A522-0FD61DC11863', 'BI Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('F7730A8A-9464-4EA9-9DCD-135AE4795ED3', '0 Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('1D77070D-5EA0-4FB7-BD95-229337B8A794', '0 Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('A787074D-6BF4-4B78-8380-499E86CADC09', 'BII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('46816FDC-318D-492C-A6D4-507927FF7B02', 'BIII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('C11956E7-B7F9-437F-B5F1-60A677756999', 'AB Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('6DFC5B96-30BE-4D7A-B76B-A1444D7F9FF4', 'AI Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('1C5404B7-0E60-45D7-BDCB-B672E40291E7', 'AII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('0A1A5732-DC60-440B-B34F-D1CD412F946A', 'ABIV Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('C367660F-DC4A-477A-B363-FB112EFF7855', 'BI Positive');
 
  SELECT * 
  FROM Colection_Points
