@@ -34,7 +34,7 @@ WHERE c.Name = 'Campain1'
 
 SELECT COUNT(DonorID) as nb_pacients
 FROM Donors
-WHERE Type = 'Pacient'
+WHERE Type LIKE  'Pac%'
 
 --4. Numarul campaniilor efectuate de banca X
 SELECT COUNT(c.CampainID) 
@@ -60,7 +60,7 @@ WHERE d.Type = 'Donor' AND t.Description  LIKE 'BI P%' AND p.City = 'Mures'
 
 SELECT * 
 FROM Blood_Type
-WHERE Description LIKE 'BIII P%'
+WHERE Description LIKE 'BI P%'
 
 
 --6. Numarul bancilor care au obtinut rezerve in urma campaniilor din ultimii 2 ani 
