@@ -63,9 +63,21 @@ CREATE TABLE [Blood_Bank](
 	[Country] nvarchar(50) NOT NULL,
 	[PhoneNumber] nvarchar(50),
 	[EmailAddress] nvarchar(50),
-CONSTRAINT [PK_Blood_Bank] PRIMARY KEY ([Blood_BankID], [Colection_PointID]),
+CONSTRAINT [PK_Blood_Bank] PRIMARY KEY ([Blood_BankID]),
 CONSTRAINT [FK_Blood_Bank_Colection_Points] FOREIGN KEY ([Colection_PointID])
     REFERENCES [Colection_Points]([Colection_PointID]));
+		
+
+CREATE TABLE [Orders](
+	[OrdersID] uniqueidentifier NOT NULL,
+	[Blood_BankID] uniqueidentifier NOT NULL,
+	[Blood_TypeID] uniqueidentifier NOT NULL,
+	[Description] nvarchar(150) NOT NULL,
+CONSTRAINT [PK_Orders] PRIMARY KEY ([OrdersID]),
+CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
+   REFERENCES [Blood_Bank]([Blood_BankID]),
+CONSTRAINT [FK_Orders_Blood_Type] FOREIGN KEY ([Blood_TypeID])
+   REFERENCES [Blood_Type]([Blood_TypeID]));
 
 
  SELECT *
