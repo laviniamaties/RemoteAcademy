@@ -1,7 +1,5 @@
 --creare baza de date Blood donation Tracker ---
-create database BloodDonationTracker
-
---DROP TABLE 
+CREATE DATABASE BloodDonationTracker
 
 --Tabel 1 : Donors 
 
@@ -28,8 +26,6 @@ CREATE TABLE [Blood_Type](
 CONSTRAINT [PK_Blood_Type] PRIMARY KEY ([Blood_TypeID]),
 CONSTRAINT [FK_Blood_Type_Donors] FOREIGN KEY ([DonorID])
     REFERENCES [Donors]([DonorID]));
-
-	DROP TABLE Blood_Type
 
 --Tabel 3 : Colection_Points 
 CREATE TABLE [Colection_Points](
@@ -58,8 +54,6 @@ CONSTRAINT [FK_Campain_Colection_Points] FOREIGN KEY ([Colection_PointID])
     REFERENCES [Colection_Points]([Colection_PointID])
 	);
 
-drop table Campains;
-
 --Tabel 5 : Blood_Bank 
 CREATE TABLE [Blood_Bank](
 	[Blood_BankID] uniqueidentifier NOT NULL,
@@ -73,17 +67,6 @@ CREATE TABLE [Blood_Bank](
 CONSTRAINT [PK_Blood_Bank] PRIMARY KEY ([Blood_BankID], [Colection_PointID]),
 CONSTRAINT [FK_Blood_Bank_Colection_Points] FOREIGN KEY ([Colection_PointID])
     REFERENCES [Colection_Points]([Colection_PointID]));
-
-
-
---Tabel 6 : Orders 
---CREATE TABLE [Orders](
---	[OrdersID] uniqueidentifier NOT NULL,
---	[Blood_BankID] uniqueidentifier NOT NULL,
---	[Description] nvarchar(150) NOT NULL,
---CONSTRAINT [PK_Orders] PRIMARY KEY ([OrdersID]),
---CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
- --   REFERENCES [Blood_Bank]([Blood_BankID]));
 
  SELECT *
  FROM Donors
@@ -185,6 +168,3 @@ WHERE  DonorID= '1C5404B7-0E60-45D7-BDCB-B672E40291E7'
 UPDATE Donors
  SET BirthDay = '1998-03-10'
  WHERE DonorID = '1C5404B7-0E60-45D7-BDCB-B672E40291E7'
-
- DELETE 
- FROM Campains
