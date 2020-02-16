@@ -62,6 +62,11 @@ SELECT *
 FROM Blood_Type
 WHERE Description LIKE 'BI P%'
 
+SELECT * 
+FROM Colection_Points
+WHERE City = 'Mures'
+ORDER BY Name, Address
+
 
 --6. Numarul bancilor care au obtinut rezerve in urma campaniilor din ultimii 2 ani 
 SELECT *
