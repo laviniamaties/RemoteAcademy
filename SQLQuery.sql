@@ -122,3 +122,11 @@ SELECT d.FirstName, t.Description, d.Type
 FROM Donors d
 INNER JOIN Blood_Type t ON t.DonorID = d.DonorID
 WHERE t.Description LIKE 'BI %' AND d.Type = 'Donor'
+
+-- 10. Numarul punctelor de colectare din fiecare tara
+
+SELECT count(Colection_PointID), Country
+FROM Colection_Points
+GROUP BY Country
+HAVING count(Colection_PointID) > 2
+ORDER BY Country
