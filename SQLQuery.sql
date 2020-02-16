@@ -1,5 +1,5 @@
 --Query-uri : 
---1. Numarul donatorilor NASCUTI DUPA 1994
+--1. Numarul donatorilor nascuti dupa  1994
 
 SELECT FirstName, LastName,  BirthDay, Sex
 FROM Donors
@@ -7,7 +7,7 @@ where Sex = 'Female'
 
 SELECT  COUNT(DonorID), Sex, BirthDay 
 FROM Donors
-WHERE  BirthDay > '1994-01-01'
+WHERE  BirthDay > '1994-01-01' AND Type = 'Donor'
 GROUP BY Sex, BirthDay
 HAVING COUNT(DonorID) > =  1
 
@@ -34,7 +34,7 @@ WHERE c.Name = 'Campain1'
 
 SELECT COUNT(DonorID) as nb_pacients
 FROM Donors
-WHERE Type LIKE  'Pac%'
+WHERE Type LIKE 'Pac%'
 
 --4. Numarul campaniilor efectuate de banca X
 SELECT COUNT(c.CampainID) 
@@ -75,4 +75,45 @@ INNER JOIN Campains c ON c.Colection_PointID = p.Colection_PointID
 WHERE c.Input_Date >= '2018-01-01'
 GROUP BY b.Name,  c.Name 
 
+-- 7. La cate campanii a participat donatorul cu grupa de sange BIII ?
 
+SELECT *
+FROM Donors
+
+
+SELECT
+--COUNT(c.CampainID)
+ d.FirstName, d.LastName, t.Description, c.Description AS Campain
+FROM Campains c
+INNER JOIN Colection_Points p ON p.Colection_PointID = c.Colection_PointID
+INNER JOIN Donors d ON d.DonorID = p.DonorID
+INNER JOIN Blood_Type t ON t.DonorID = d.DonorID 
+WHERE t.Description LIKE 'BIII %' AND d.Type = 'Donor'
+
+-- 8. Numarul comenzilor efectuate de banca X 
+
+SELECT * 
+FROM Orders
+SELECT * 
+FROM Blood_Bank
+
+SELECT COUNT(o.OrderID)
+-- o.Description
+FROM Orders o 
+INNER JOIN Blood_Bank b ON B.Blood_BankID = o.Blood_BankID
+WHERE b.Name = 'Bank3'
+
+
+-- 9. Lista donatorilor cu  grupa BI
+SELECT * 
+FROM Donors 
+WHERE Type = 'Pacient'
+
+SELECT *  
+FROM Blood_Type 
+WHERE Description LIKE 'BI %'
+
+SELECT d.FirstName, t.Description, d.Type
+FROM Donors d
+INNER JOIN Blood_Type t ON t.DonorID = d.DonorID
+WHERE t.Description LIKE 'BI %' AND d.Type = 'Donor'
