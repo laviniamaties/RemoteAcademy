@@ -1,6 +1,8 @@
 --creare baza de date Blood donation Tracker ---
 create database BloodDonationTracker
 
+--DROP TABLE 
+
 --Tabel 1 : Donors 
 
 CREATE TABLE [Donors](
@@ -23,9 +25,11 @@ CREATE TABLE [Blood_Type](
 	[Blood_TypeID] uniqueidentifier NOT NULL,
 	[DonorID] uniqueidentifier NOT NULL,
 	[Description] nvarchar(150) NOT NULL,
-CONSTRAINT [PK_Blood_Type] PRIMARY KEY ([Blood_TypeID], [DonorID] ),
+CONSTRAINT [PK_Blood_Type] PRIMARY KEY ([Blood_TypeID]),
 CONSTRAINT [FK_Blood_Type_Donors] FOREIGN KEY ([DonorID])
     REFERENCES [Donors]([DonorID]));
+
+	DROP TABLE Blood_Type
 
 --Tabel 3 : Colection_Points 
 CREATE TABLE [Colection_Points](
@@ -54,6 +58,7 @@ CONSTRAINT [FK_Campain_Colection_Points] FOREIGN KEY ([Colection_PointID])
     REFERENCES [Colection_Points]([Colection_PointID])
 	);
 
+drop table Campains;
 
 --Tabel 5 : Blood_Bank 
 CREATE TABLE [Blood_Bank](
@@ -65,20 +70,20 @@ CREATE TABLE [Blood_Bank](
 	[Country] nvarchar(50) NOT NULL,
 	[PhoneNumber] nvarchar(50),
 	[EmailAddress] nvarchar(50),
-CONSTRAINT [PK_Blood_Bank] PRIMARY KEY ([Blood_BankID]),
+CONSTRAINT [PK_Blood_Bank] PRIMARY KEY ([Blood_BankID], [Colection_PointID]),
 CONSTRAINT [FK_Blood_Bank_Colection_Points] FOREIGN KEY ([Colection_PointID])
     REFERENCES [Colection_Points]([Colection_PointID]));
 
 
---Tabel 6 : Orders 
-CREATE TABLE [Orders](
-	[OrderID] uniqueidentifier NOT NULL,
-	[Blood_BankID] uniqueidentifier,
-	[Description] nvarchar(150) NOT NULL,
-CONSTRAINT [PK_Orders] PRIMARY KEY ([OrderID]),
-CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
-   REFERENCES [Blood_Bank]([Blood_BankID]));
 
+--Tabel 6 : Orders 
+--CREATE TABLE [Orders](
+--	[OrdersID] uniqueidentifier NOT NULL,
+--	[Blood_BankID] uniqueidentifier NOT NULL,
+--	[Description] nvarchar(150) NOT NULL,
+--CONSTRAINT [PK_Orders] PRIMARY KEY ([OrdersID]),
+--CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
+ --   REFERENCES [Blood_Bank]([Blood_BankID]));
 
  SELECT *
  FROM Donors
@@ -102,17 +107,17 @@ CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
   SELECT * 
  FROM Donors
  
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('7C9ADF58-2C0F-4471-9483-03296CDEBD8E','7C9ADF58-2C0F-4471-9483-03296CDEBD8E', 'BI Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('A8E61FD8-013E-4618-A522-0FD61DC11863','A8E61FD8-013E-4618-A522-0FD61DC11863', 'BI Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('F7730A8A-9464-4EA9-9DCD-135AE4795ED3', 'F7730A8A-9464-4EA9-9DCD-135AE4795ED3', '0 Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('1D77070D-5EA0-4FB7-BD95-229337B8A794', '1D77070D-5EA0-4FB7-BD95-229337B8A794', '0 Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ( 'A787074D-6BF4-4B78-8380-499E86CADC09','A787074D-6BF4-4B78-8380-499E86CADC09', 'BII Negative');
- INSERT INTO Blood_Type([Blood_TypeID],  [DonorID], [Description] ) VALUES ( '46816FDC-318D-492C-A6D4-507927FF7B02', '46816FDC-318D-492C-A6D4-507927FF7B02', 'BIII Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ( 'C11956E7-B7F9-437F-B5F1-60A677756999', 'C11956E7-B7F9-437F-B5F1-60A677756999', 'AB Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ('6DFC5B96-30BE-4D7A-B76B-A1444D7F9FF4',  '6DFC5B96-30BE-4D7A-B76B-A1444D7F9FF4', 'AI Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ( '1C5404B7-0E60-45D7-BDCB-B672E40291E7', '1C5404B7-0E60-45D7-BDCB-B672E40291E7', 'AII Negative');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ( '0A1A5732-DC60-440B-B34F-D1CD412F946A',  '0A1A5732-DC60-440B-B34F-D1CD412F946A', 'ABIV Positive');
- INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES ( 'C367660F-DC4A-477A-B363-FB112EFF7855','C367660F-DC4A-477A-B363-FB112EFF7855', 'BI Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '7C9ADF58-2C0F-4471-9483-03296CDEBD8E', 'BI Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'A8E61FD8-013E-4618-A522-0FD61DC11863', 'BI Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'F7730A8A-9464-4EA9-9DCD-135AE4795ED3', '0 Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '1D77070D-5EA0-4FB7-BD95-229337B8A794', '0 Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'A787074D-6BF4-4B78-8380-499E86CADC09', 'BII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '46816FDC-318D-492C-A6D4-507927FF7B02', 'BIII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'C11956E7-B7F9-437F-B5F1-60A677756999', 'AB Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '6DFC5B96-30BE-4D7A-B76B-A1444D7F9FF4', 'AI Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '1C5404B7-0E60-45D7-BDCB-B672E40291E7', 'AII Negative');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), '0A1A5732-DC60-440B-B34F-D1CD412F946A', 'ABIV Positive');
+ INSERT INTO Blood_Type([Blood_TypeID], [DonorID], [Description] ) VALUES (NEWID(), 'C367660F-DC4A-477A-B363-FB112EFF7855', 'BI Positive');
 
  SELECT * 
  FROM Colection_Points
@@ -152,6 +157,7 @@ CONSTRAINT [FK_Orders_Blood_Bank] FOREIGN KEY ([Blood_BankID])
  INSERT INTO Campains([CampainID], [Colection_PointID], [Name], [Description], [Input_Date], [Days]) VALUES (NEWID(), '3267F4D2-1302-479E-9534-25F968670528', 'Campain3', 'Description9', '2018-01-01', '4');
  INSERT INTO Campains([CampainID], [Colection_PointID], [Name], [Description], [Input_Date], [Days]) VALUES (NEWID(), 'AD80C85C-FE9C-4682-8022-8D25BBFB3C1E', 'Campain3', 'Description10', '2019-01-01', '4');
 
+
  SELECT * 
  FROM Blood_Bank
  SELECT * 
@@ -180,15 +186,5 @@ UPDATE Donors
  SET BirthDay = '1998-03-10'
  WHERE DonorID = '1C5404B7-0E60-45D7-BDCB-B672E40291E7'
 
- SELECT *
- FROM Orders
-
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES ( NEWID(), '1D2CEF8F-9FE5-430F-A29D-0071120747BF', 'Order1');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES ( NEWID(),  '881BEC15-05AF-40E3-B3EE-2107D5471EB3', 'Order2');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  '1D2CEF8F-9FE5-430F-A29D-0071120747BF', 'Order3');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  'F3FD2FC0-814A-4724-896B-217D9C7BB9DA',  'Order1');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  '1D2CEF8F-9FE5-430F-A29D-0071120747BF', 'Order2');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  '50DDCBB9-1A19-4BB4-88ED-3F214DE4CF5F', 'Order3');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  '1D2CEF8F-9FE5-430F-A29D-0071120747BF', 'Order1');
-INSERT INTO Orders([OrderID], [Blood_BankID],[Description]) VALUES (NEWID(),  '401B576C-F9E9-4BAE-A4D4-7511727D3434', 'Order1');
-
+ DELETE 
+ FROM Campains
