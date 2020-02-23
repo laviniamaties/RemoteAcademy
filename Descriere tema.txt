@@ -1,0 +1,15 @@
+Gestiunea unei activitati de  donare sange 
+Aplicatia isi propune manipularea unor date dintr-un centru de colectare sange,  precum informatiile despre donator, campaniile de donare, bancile la care se depoziteaza/stocheaza sangele de la fiecare punct de colectare. 
+Tabela Donatori (Donors) reprezinta donatorul respectiv pacientul care doneaza la un punct de colectare sau beneficiaza de sange 
+Tabela  Tip Sange (BloodTypes)  reprezinta tipurile de sange : 0, A, B, AB 
+Tabela Punct de Colectare ( CollectionPoints) reprezinta punctele de colectare ale sangelui. 
+Tabela Banca de Sange (BloodBaks) reprezinta banca la care se stocheaza sangele donat in punctul de colectare. 
+Operatiile care se doresc a fi implementate: 
+-	Operatiile CRUD pe tabelele principale
+-	Afisarea si gestiunea  Donatorilor in functie de anumiti parametrii
+-	Afisarea si gestiunea Punctelor de Colectare in functie de anumiti parametrii
+-	Afisaea si gestiunea campaniilor  organizate la diferite puncte de colectare
+-	Afisarea si gestiunea bancilor beneficiare de sange de la diferite puncte de colectare
+
+ 
+
