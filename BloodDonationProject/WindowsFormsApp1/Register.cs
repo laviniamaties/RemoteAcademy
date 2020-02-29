@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    class Register
+    public class Register
     {
         public Donor donorID;
         public CollectionPoint collectionPointID;

@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    class BloodBank
+     public class BloodBank
     {
         public Guid ID { get; set; }
         public string name { get; set; }

@@ -14,7 +14,9 @@ namespace BloodDonationProject
 
             Donor donor = new Donor("Lavinia", "Maties", "Cluj", "Cluj", "Romania",
                 "0757769976", "maties.lavinia@gmail.com");
+            CollectionPoint collectionPoint = new CollectionPoint();
             Console.WriteLine(donor.firstName);
+            Console.WriteLine(collectionPoint);
 
 
             //Application.EnableVisualStyles();

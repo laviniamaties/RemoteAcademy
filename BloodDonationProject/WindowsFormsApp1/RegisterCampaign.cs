@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    class RegisterCampaign
+    public class RegisterCampaign
     {
         public CollectionPoint collectionPointID;
         public Campaign campaignID;

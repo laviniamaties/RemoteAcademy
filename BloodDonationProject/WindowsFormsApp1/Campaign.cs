@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    class Campaign
+    public class Campaign
     {
         public Guid ID { get; set; }
         public string name { get; set; }

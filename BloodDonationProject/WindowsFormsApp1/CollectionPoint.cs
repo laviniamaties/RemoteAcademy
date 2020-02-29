@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    class CollectionPoint
+    public class CollectionPoint
     {
         public Guid ID { get; set; }
         public string name { get; set; }

@@ -5,3 +5,4 @@ F:\RemoteAcademy\BloodDonationProject\WindowsFormsApp1\obj\Debug\Model.Propertie
 F:\RemoteAcademy\BloodDonationProject\WindowsFormsApp1\obj\Debug\Model.csproj.GenerateResource.cache
 F:\RemoteAcademy\BloodDonationProject\WindowsFormsApp1\obj\Debug\Model.exe
 F:\RemoteAcademy\BloodDonationProject\WindowsFormsApp1\obj\Debug\Model.pdb
+F:\RemoteAcademy\BloodDonationProject\WindowsFormsApp1\obj\Debug\Model.csprojAssemblyReference.cache
