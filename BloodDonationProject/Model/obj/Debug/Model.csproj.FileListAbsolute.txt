@@ -1,0 +1,8 @@
+F:\RemoteAcademy\BloodDonationProject\Model\bin\Debug\Model.exe.config
+F:\RemoteAcademy\BloodDonationProject\Model\bin\Debug\Model.exe
+F:\RemoteAcademy\BloodDonationProject\Model\bin\Debug\Model.pdb
+F:\RemoteAcademy\BloodDonationProject\Model\obj\Debug\Model.csprojAssemblyReference.cache
+F:\RemoteAcademy\BloodDonationProject\Model\obj\Debug\Model.Properties.Resources.resources
+F:\RemoteAcademy\BloodDonationProject\Model\obj\Debug\Model.csproj.GenerateResource.cache
+F:\RemoteAcademy\BloodDonationProject\Model\obj\Debug\Model.exe
+F:\RemoteAcademy\BloodDonationProject\Model\obj\Debug\Model.pdb

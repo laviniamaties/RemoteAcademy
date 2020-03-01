@@ -7,7 +7,6 @@ namespace Model
         public Guid ID { get; set; }
         public string name { get; set; }
         public string adresse { get; set; }
-
         public string city { get; set; }
         public string country { get; set; }
         public string phoneNumber { get; set; }

@@ -28,6 +28,13 @@ namespace Model
         public Donor(string firstName, string lastName, string adresse, string city, string country, 
             string phoneNumber, string emailAdresse)
         {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.adresse = adresse;
+            this.city = city;
+            this.country = country;
+            this.phoneNumber = phoneNumber;
+            this.emailAdresse = emailAdresse;
 
         }
 

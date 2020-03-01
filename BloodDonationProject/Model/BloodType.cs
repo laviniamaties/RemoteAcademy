@@ -15,6 +15,8 @@ namespace Model
 
         public BloodType(Guid id, string bloodType)
         {
+            this.ID = id;
+            this.bloodType = bloodType;
         }
     }
 }
