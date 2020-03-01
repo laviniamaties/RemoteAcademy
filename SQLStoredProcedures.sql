@@ -685,20 +685,92 @@ EXECUTE dbo.BloodDonation_BloodBank_ReadByID  @BloodBankID
 
 --DELETE 
 
+--stergem toate referintele unui ID 
 /*
-CREATE PROCEDURE dbo.BloodDonation_CollectionPointsDelete
-	   @CollectionPointID uniqueidentifier
+CREATE PROCEDURE dbo.BloodDonation_ColectionPointsDelete
+	   @ColectionPointID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM   CollectionPoints 
-		WHERE CollectionPointID= @CollectionPointID
+		DELETE FROM Registers 
+		WHERE Registers.ColectionPointID = @ColectionPointID
+		DELETE FROM RegisterCampaigns
+		WHERE RegisterCampaigns.ColectionPointID = @ColectionPointID
+		DELETE FROM   ColectionPoints 
+		WHERE ColectionPoints.ColectionPointID= @ColectionPointID
 END
 GO
 
-DECLARE @CollectionPointID uniqueidentifier = '6A0594C2-E8FF-4D88-BD7D-2F0F4A1062BC'
-EXECUTE dbo.BloodDonation_CollectionPointsDelete @CollectionPointID
+DECLARE @ColectionPointID uniqueidentifier = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78'
+EXECUTE dbo.BloodDonation_ColectionPointsDelete @ColectionPointID
 
+select * from ColectionPoints WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
+select * from Registers WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
+select * from RegisterCampaigns WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
 */
+
+/*
+CREATE PROCEDURE dbo.BloodDonation_DonorsDelete
+	   @DonorID uniqueidentifier
+AS
+BEGIN
+		DELETE FROM Registers 
+		WHERE Registers.DonorID = @DonorID
+		DELETE FROM Donors
+		WHERE Donors.DonorID  = @DonorID
+END
+GO
+
+DECLARE @DonorID uniqueidentifier = '  '
+EXECUTE dbo.BloodDonation_DonorsDelete @DonorID
+*/
+
+/*
+CREATE PROCEDURE dbo.BloodDonation_BloodTypesDelete
+	   @BloodTypeID uniqueidentifier
+AS
+BEGIN
+		DELETE FROM Donors 
+		WHERE Donors.BloodTypeID = @BloodTypeID
+		DELETE FROM BloodTypes
+		WHERE BloodTypes.BloodTypeID  = @BloodTypeID
+END
+GO
+
+DECLARE @BloodTypeID uniqueidentifier = '  '
+EXECUTE dbo.BloodDonation_BloodTypesDelete @BloodTypeID
+*/
+
+/*
+CREATE PROCEDURE dbo.BloodDonation_CampaignsDelete
+	   @CampaignID uniqueidentifier
+AS
+BEGIN
+		DELETE FROM RegisterCampaigns 
+		WHERE RegisterCampaigns.CampaignID = @CampaignID
+		DELETE FROM Campaigns
+		WHERE Campaigns.CampaignID  = @CampaignID
+END
+GO
+
+DECLARE @CampaignID uniqueidentifier = '  '
+EXECUTE dbo.BloodDonation_CampaignsDelete @CampaignID
+*/
+
+CREATE PROCEDURE dbo.BloodDonation_BloodBanksDelete
+	   @BloodBankID uniqueidentifier
+AS
+BEGIN
+		DELETE FROM ColectionPoints 
+		WHERE ColectionPoints.BloodBankID = @BloodBankID
+		DELETE FROM BloodBanks
+		WHERE BloodBanks.BloodBankID  = @BloodBankID
+END
+GO
+
+DECLARE @BloodBankID uniqueidentifier = '  '
+EXECUTE dbo.BloodDonation_BloodBanksDelete @BloodBankID
+
+
 
 /*
 delete  from  Donors 
