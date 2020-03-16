@@ -6,18 +6,18 @@ namespace Model
     {
       
         public Guid ID { get; set; }
-        private string sex { get; set; }
-        private string type { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string adresse { get; set; }
-        public string city { get; set; }
-        public string country { get; set; }
-        public string phoneNumber { get; set; }
-        public string emailAdresse { get; set;}
-        private DateTime birthday { get; set; }
+        public string Sex { get; set; }
+        public string Type { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string PhoneNumber { get; set; }
+        public string EmailAddress { get; set;}
+        public DateTime Birthday { get; set; }
 
-        public BloodType bloodType;
+        public BloodType BloodType { get; set; }
 
         public Donor()
         {
@@ -25,20 +25,21 @@ namespace Model
         }
 
 
-        public Donor(string firstName, string lastName, string adresse, string city, string country, 
-            string phoneNumber, string emailAdresse)
+        public Donor(string sex , string type, string firstName, string lastName, string address, string city, 
+            string country, string phoneNumber, string emailAddress, DateTime birthday , BloodType bloodType)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.adresse = adresse;
-            this.city = city;
-            this.country = country;
-            this.phoneNumber = phoneNumber;
-            this.emailAdresse = emailAdresse;
-
+            Sex = sex;
+            Type = type;
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            City = city;
+            Country = country;
+            PhoneNumber = phoneNumber;
+            EmailAddress = emailAddress;
+            Birthday = birthday;
+            BloodType = bloodType;
         }
-
-      
 
     }
 }

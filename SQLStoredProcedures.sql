@@ -1,7 +1,7 @@
 -- Stored Procedures 
 --CREATE 
 
-/*CREATE PROCEDURE dbo.BloodDonation_BloodTypesCreate
+CREATE PROCEDURE dbo.BloodDonation_BloodTypesCreate
 	   @BloodTypeID uniqueidentifier,  
 	   @BloodType nvarchar(150)
 	   	 
@@ -21,12 +21,7 @@ SET @BloodTypeID = NEWID()
 	END
 GO
 
-DECLARE @BloodTypeID uniqueidentifier = NEWID(),
-		 @BloodType nvarchar(150) = 'BIII Neagtive'
-EXECUTE dbo.BloodDonation_BloodTypesCreate  @BloodTypeID, @BloodType 
-*/
 
-/*
 CREATE PROCEDURE dbo.BloodDonation_DonorsCreate
 	   @DonorID uniqueidentifier ,
 	   @BloodTypeID uniqueidentifier,
@@ -87,26 +82,9 @@ SET @DonorID = NEWID()
 	WHERE  @DonorID = @DonorID
 END
 GO
-DECLARE 
-		@DonorID uniqueidentifier = NEWID(),
-	    @BloodTypeID uniqueidentifier  = '51F1EB5D-97AE-4E57-AD93-4F084C3F2FF2' , 
-	   @Sex nvarchar(50) = 'Female',
-	   @Type  nvarchar(50) = 'Donor', 
-	   @FirstName nvarchar(50) = 'Maties', 
-	   @LastName nvarchar(50) = 'Lavinia', 
-	   @Address nvarchar(150) =' 58 D Cluj',  
-	   @City nvarchar(50) = 'Cluj',
-   	   @Country nvarchar(50) = 'Romania', 
- 	   @PhoneNumber nvarchar(50)  = '0751040192', 
-	   @EmailAddress  nvarchar(50) = 'maties.lavinia@gmail.com',
-	   @BirthDay date = '1996-03-05';
-  		
-EXECUTE dbo.[BloodDonation_DonorsCreate]  @DonorID , @BloodTypeID ,  @Sex ,  @Type ,  @FirstName ,  @LastName  ,
-	   @Address  , @City , @Country , @PhoneNumber , @EmailAddress , @BirthDay
-*/
 
 
-/*CREATE PROCEDURE dbo.BloodDonation_BloodBanksCreate
+CREATE PROCEDURE dbo.BloodDonation_BloodBanksCreate
 	@BloodBankID uniqueidentifier ,
 	@Name nvarchar(50) ,
 	@Address nvarchar(150) ,
@@ -148,25 +126,7 @@ SET @BloodBankID = NEWID()
 	END
 GO
 
-DECLARE 
-		@BloodBankID uniqueidentifier = NEWID(),
-		@Name nvarchar(50) = 'Bank3',
-		@Address nvarchar(150) = '566 Turpis. St.',
-		@City nvarchar(50) = 'Oradea' ,
-		@Country nvarchar(50) = 'Romania',
-		@PhoneNumber nvarchar(50) = '063-511-7196',
-		@EmailAddress nvarchar(50) = 'felis.ullamcorper.viverra@gmail.com'
-	   		
-EXECUTE dbo.[BloodDonation_BloodBanksCreate]  @BloodBankID  ,
-	   @Name ,
-	   @Address  ,
-	   @City  ,
-	   @Country ,
-	   @PhoneNumber ,
-	   @EmailAddress 
-*/
-
-/* CREATE PROCEDURE dbo.BloodDonation_CampaignsCreate
+ CREATE PROCEDURE dbo.BloodDonation_CampaignsCreate
 	@CampaignID uniqueidentifier ,
 	@Name nvarchar(50),
 	@Description nvarchar(150),
@@ -200,22 +160,7 @@ SET @CampaignID = NEWID()
 	END
 GO
 
-DECLARE 
-		@CampaignID uniqueidentifier = NEWID(),
-		@Name nvarchar(50) = 'Campaign3',
-		@Description nvarchar(150) = 'Description3',
-		@StartDate date = '2020-02-22',
-		@EndDate date = '2020-03-22' 
-	   		
-EXECUTE dbo.[BloodDonation_CampaignsCreate]  @CampaignID ,
-		@Name ,
-		@Description ,
-		@StartDate,
-		@EndDate
-*/
-
-
-/*CREATE PROCEDURE dbo.BloodDonation_CollectionPointsCreate
+CREATE PROCEDURE dbo.BloodDonation_CollectionPointsCreate
 	@CollectionpointID uniqueidentifier,
 	@BloodBankID uniqueidentifier ,
 	@Name nvarchar(50) ,
@@ -261,27 +206,7 @@ SET @CollectionpointID = NEWID()
 	END
 GO
 
-DECLARE 
-		@CollectionpointID  uniqueidentifier = NEWID(), 
-		@BloodBankID uniqueidentifier = '07CFFAA5-EF6A-4EEB-AFCC-7A5B722EF369' ,
-		@Name nvarchar(50) = 'Donation3',
-		@Address nvarchar(150) = '55 Turpis. St.',
-		@City nvarchar(50) = 'Oradea' ,
-		@Country nvarchar(50) = 'Romania',
-		@PhoneNumber nvarchar(50) = '063-511-7199',
-		@EmailAddress nvarchar(50) = 'felis.ullamcorper@gmail.com'
-	   		
-EXECUTE dbo.[BloodDonation_CollectionPointsCreate]  @CollectionpointID, 
-	   @BloodBankID  ,
-	   @Name ,
-	   @Address  ,
-	   @City  ,
-	   @Country ,
-	   @PhoneNumber ,
-	   @EmailAddress 
-*/
-
-/*CREATE PROCEDURE dbo.BloodDonation_RegistersCreate
+CREATE PROCEDURE dbo.BloodDonation_RegistersCreate
 	@DonorID uniqueidentifier ,
 	@CollectionPointID uniqueidentifier 
 AS
@@ -298,15 +223,7 @@ INSERT INTO Registers(
 	END
 GO
 
-DECLARE 
-		@DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA',
-		@CollectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
-	
-EXECUTE dbo.[BloodDonation_RegistersCreate]   @DonorID  ,
-	   @CollectionPointID
-*/
-
-/*CREATE PROCEDURE dbo.BloodDonation_RegisterCampaignsCreate
+CREATE PROCEDURE dbo.BloodDonation_RegisterCampaignsCreate
 	  @CampaignID uniqueidentifier ,
 	  @CollectionPointID uniqueidentifier 
 AS
@@ -322,16 +239,8 @@ INSERT INTO RegisterCampaigns(
 	END
 GO
 
-DECLARE 
-		@CampaignID uniqueidentifier = 'D520C9D0-F194-4287-A8CD-31347FB70DEF',
-	    @CollectionPointID uniqueidentifier  ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
-	
-EXECUTE dbo.[BloodDonation_RegisterCampaignsCreate]  @CampaignID ,
-	    @CollectionPointID
-*/
-
 --UPDATE 
-/*CREATE PROCEDURE dbo.BloodDonation_BloodTypesUpdate
+CREATE PROCEDURE dbo.BloodDonation_BloodTypesUpdate
 	   @BloodTypeID uniqueidentifier,  
 	   @BloodType nvarchar(150)
 AS
@@ -344,12 +253,7 @@ WHERE   BloodTypeID = @BloodTypeID
 END
 GO
 
-DECLARE @BloodTypeID uniqueidentifier = '51F1EB5D-97AE-4E57-AD93-4F084C3F2FF2',
-		 @BloodType nvarchar(150) = 'BIII Positive'
-EXECUTE dbo.BloodDonation_BloodTypesUpdate  @BloodTypeID, @BloodType 
-*/
-
-/*CREATE PROCEDURE dbo.BloodDonation_DonorsUpdate 
+CREATE PROCEDURE dbo.BloodDonation_DonorsUpdate 
 	   @DonorID uniqueidentifier ,
 	   @BloodTypeID uniqueidentifier,
 	   @Sex nvarchar(50) ,
@@ -382,29 +286,7 @@ WHERE  DonorID = @DonorID
 END
 GO
 
-DECLARE 
-	   @DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA',
-       @BloodTypeID uniqueidentifier  = '51F1EB5D-97AE-4E57-AD93-4F084C3F2FF2' , 
-	   @Sex nvarchar(50) = 'Female',
-	   @Type  nvarchar(50) = 'Pacient', 
-	   @FirstName nvarchar(50) = 'Maties', 
-       @LastName nvarchar(50) = 'Lavinia Manuela', 
-	   @Address nvarchar(150) =' 58 D Cluj',  
-	   @City nvarchar(50) = 'Cluj',
-   	   @Country nvarchar(50) = 'Romania', 
- 	   @PhoneNumber nvarchar(50)  = '0751040192', 
-	   @EmailAddress  nvarchar(50) = 'maties.lavinia@gmail.com',
-	   @BirthDay date = '1996-03-05'
-   		
-EXECUTE dbo.BloodDonation_DonorsUpdate  @DonorID , @BloodTypeID ,  @Sex ,  @Type ,  @FirstName ,  @LastName  ,
-	   @Address  , @City , @Country , @PhoneNumber , @EmailAddress , @BirthDay
-
-	   select * from Donors
-	   select * from Registers
-
-*/
-
-/*CREATE PROCEDURE dbo.BloodDonation_BloodBanksUpdate
+CREATE PROCEDURE dbo.BloodDonation_BloodBanksUpdate
 	@BloodBankID uniqueidentifier ,
 	@Name nvarchar(50) ,
 	@Address nvarchar(150) ,
@@ -427,25 +309,7 @@ BEGIN
 	END
 GO
 
-DECLARE 
-		@BloodBankID uniqueidentifier = '988DB2DC-B28F-41A4-A83E-16D3047999EA',
-		@Name nvarchar(50) = 'Bank3',
-		@Address nvarchar(150) = '28 Turpis. St.',
-		@City nvarchar(50) = 'Oradea' ,
-		@Country nvarchar(50) = 'Romania',
-		@PhoneNumber nvarchar(50) = '0789654352',
-		@EmailAddress nvarchar(50) = 'felis.ullamcorper@gmail.com'
-	   		
-EXECUTE dbo.[BloodDonation_BloodBanksUpdate]  @BloodBankID  ,
-	   @Name ,
-	   @Address  ,
-	   @City  ,
-	   @Country ,
-	   @PhoneNumber ,
-	   @EmailAddress 
-
-*/
-/* CREATE PROCEDURE dbo.BloodDonation_CampaignsUpdate
+CREATE PROCEDURE dbo.BloodDonation_CampaignsUpdate
 	@CampaignID uniqueidentifier ,
 	@Name nvarchar(50),
 	@Description nvarchar(150),
@@ -464,22 +328,6 @@ SET
 	END
 GO
 
-DECLARE 
-		@CampaignID uniqueidentifier = 'D520C9D0-F194-4287-A8CD-31347FB70DEF', 
-		@Name nvarchar(50) = 'Campaign1',
-		@Description nvarchar(150) = 'Description1',
-		@StartDate date = '2020-02-22',
-		@EndDate date = '2020-03-22' 
-	   		
-EXECUTE dbo.[BloodDonation_CampaignsUpdate]  @CampaignID ,
-		@Name ,
-		@Description ,
-		@StartDate,
-		@EndDate
-
-*/
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_CollectionPointsUpdate
 	@CollectionpointID uniqueidentifier,
 	@BloodBankID uniqueidentifier ,
@@ -506,28 +354,6 @@ SET
 	END
 GO
 
-DECLARE 
-		@CollectionpointID  uniqueidentifier = '4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF', 
-		@BloodBankID uniqueidentifier = '07CFFAA5-EF6A-4EEB-AFCC-7A5B722EF369' ,
-		@Name nvarchar(50) = 'Donation11',
-		@Address nvarchar(150) = '55 Turpis. St.',
-		@City nvarchar(50) = 'Oradea' ,
-		@Country nvarchar(50) = 'Romania',
-		@PhoneNumber nvarchar(50) = '063-511-7199',
-		@EmailAddress nvarchar(50) = 'felis.ullamcorper@gmail.com'
-	   		
-EXECUTE dbo.[BloodDonation_CollectionPointsUpdate]  @CollectionpointID, 
-	   @BloodBankID  ,
-	   @Name ,
-	   @Address  ,
-	   @City  ,
-	   @Country ,
-	   @PhoneNumber ,
-	   @EmailAddress 
-	   */
-/* Pentru UPDATE-ul unui tabel de legatura, ar trebui sa fac o procedura care face UPDATE si pe 
-tabelele principale automat, nu? 
-
 CREATE PROCEDURE dbo.BloodDonation_RegistersUpdate
 	@DonorID uniqueidentifier ,
 	@CollectionPointID uniqueidentifier 
@@ -541,26 +367,15 @@ WHERE DonorID = @DonorID  AND CollectionPointID = @CollectionPointID
 END
 GO
 
-DECLARE 
-		@DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA',
-		@CollectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
-	
-EXECUTE dbo.[BloodDonation_RegistersUpdate]   @DonorID  ,
-	   @CollectionPointID
-*/
 
 --READ BY ID
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_BloodTypes_ReadByID
 (
 	@BloodTypeID uniqueidentifier
 )
 AS
 BEGIN
-	SELECT  t.BloodType, 
-			d.FirstName
-			
+	SELECT  t.BloodType, d.FirstName
 	FROM BloodTypes t
 		INNER JOIN Donors  d ON d.BloodTypeID = t.BloodTypeID
 	WHERE t.BloodTypeID = @BloodTypeID
@@ -568,43 +383,37 @@ BEGIN
 	END
 GO
 
---declarations
-DECLARE @BloodTypeID uniqueidentifier = '51F1EB5D-97AE-4E57-AD93-4F084C3F2FF2'
-EXECUTE dbo.BloodDonation_BloodTypes_ReadByID @BloodTypeID
-*/
+---this procedure reads only the dates consisting Blood Types
 
-/*
+CREATE PROCEDURE dbo.BloodDonation_BloodTypes_ReadByGUID
+(
+	@BloodTypeID uniqueidentifier
+)
+AS
+BEGIN
+	SELECT  * 
+	FROM BloodTypes t
+	WHERE BloodTypeID = @BloodTypeID
+	END
+GO
+
 CREATE PROCEDURE dbo.BloodDonation_Donors_ReadByID
 (
 	@DonorID uniqueidentifier
 )
 AS
 BEGIN
-	SELECT  d.DonorID, d.FirstName,  t.BloodType, r.DonorID
+	--SELECT  d.DonorID, d.FirstName,  t.BloodType, r.DonorID
+	SELECT *
 	FROM Donors d 
 		INNER JOIN BloodTypes t  ON t.BloodTypeID = d.BloodTypeID
 		INNER JOIN Registers r ON r.DonorID = d.DonorID
-		INNER JOIN CollectionPoints c ON c.CollectionPointID = r.CollectionPointID
+		INNER JOIN ColectionPoints c ON c.ColectionPointID = r.ColectionPointID
 	WHERE d.DonorID = @DonorID
-	GROUP BY d.DonorID, d.FirstName,  t.BloodType, r.DonorID
+	--GROUP BY d.DonorID, d.FirstName,  t.BloodType, r.DonorID, 
 	END
 GO
 
---SELECT  d.DonorID, d.FirstName,  t.BloodType, r.DonorID
---	FROM Donors d 
---		INNER JOIN BloodTypes t  ON t.BloodTypeID = d.BloodTypeID
---		INNER JOIN Registers r ON r.DonorID = d.DonorID
---		INNER JOIN CollectionPoints c ON c.CollectionPointID = r.CollectionPointID
---	WHERE d.DonorID = '08A53EA9-6FA8-4794-B833-318849721FEA'
---	GROUP BY d.DonorID, d.FirstName,  t.BloodType, r.DonorID
-
---declarations
-DECLARE @DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA'
-EXECUTE dbo.BloodDonation_Donors_ReadByID  @DonorID
-
-*/
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadByID
 (
 	@CollectionPointID uniqueidentifier
@@ -623,13 +432,6 @@ BEGIN
 	END
 GO
 
-
---declarations
-DECLARE @CollectionPointID  uniqueidentifier = '2E8E56C0-2CC8-4652-AA0C-493926883749'
-EXECUTE dbo.BloodDonation_CollectionPoints_ReadByID  @ColectionPointID
-*/
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_Campaigns_ReadByID
 (
 	@CampaignID uniqueidentifier
@@ -645,19 +447,6 @@ BEGIN
 	END
 GO
 
-SELECT  c.Name as Campaign ,p.Name as CollectionPoint 
-	FROM Campaigns c 
-		INNER JOIN RegisterCampaigns rc  ON rc.CampaignID = c.CampaignID
-		INNER JOIN CollectionPoints p ON p.CollectionPointID = rc.CollectionPointID
-	WHERE c.CampaignID = 'A8A94419-17CF-4EB4-A13B-31EC4C2D62C2'
-	GROUP BY c.Name ,p.Name 
-
---declarations
-DECLARE @CampaignID uniqueidentifier = 'A8A94419-17CF-4EB4-A13B-31EC4C2D62C2'
-EXECUTE dbo.BloodDonation_Campaigns_ReadByID  @CampaignID
-*/
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_BloodBank_ReadByID
 (
 	@BloodBankID uniqueidentifier
@@ -672,114 +461,62 @@ BEGIN
 	END
 GO
 
-SELECT  b.Name as Bank ,p.Name as CollectionPoint 
-	FROM BloodBanks b  
-		INNER JOIN CollectionPoints p ON p.BloodBankID = b.BloodBankID 
-	WHERE b.BloodBankID  = '45E90B70-7683-498F-8721-0C9EB924EFD2'
-	GROUP BY b.Name  ,p.Name  
-
---declarations
-DECLARE @BloodBankID uniqueidentifier = '45E90B70-7683-498F-8721-0C9EB924EFD2'
-EXECUTE dbo.BloodDonation_BloodBank_ReadByID  @BloodBankID
-*/ 
 
 --DELETE 
 
---stergem toate referintele unui ID 
-/*
 CREATE PROCEDURE dbo.BloodDonation_ColectionPointsDelete
 	   @ColectionPointID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM Registers 
-		WHERE Registers.ColectionPointID = @ColectionPointID
-		DELETE FROM RegisterCampaigns
-		WHERE RegisterCampaigns.ColectionPointID = @ColectionPointID
-		DELETE FROM   ColectionPoints 
+		
+		DELETE 
+		FROM   ColectionPoints 
 		WHERE ColectionPoints.ColectionPointID= @ColectionPointID
 END
 GO
 
-DECLARE @ColectionPointID uniqueidentifier = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78'
-EXECUTE dbo.BloodDonation_ColectionPointsDelete @ColectionPointID
-
-select * from ColectionPoints WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
-select * from Registers WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
-select * from RegisterCampaigns WHERE ColectionPointID = '15A56DB1-151B-4C9C-ADF5-2EC0FA6A8E78';
-*/
-
-/*
 CREATE PROCEDURE dbo.BloodDonation_DonorsDelete
 	   @DonorID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM Registers 
-		WHERE Registers.DonorID = @DonorID
-		DELETE FROM Donors
+		
+		DELETE 
+		FROM Donors
 		WHERE Donors.DonorID  = @DonorID
 END
 GO
 
-DECLARE @DonorID uniqueidentifier = '  '
-EXECUTE dbo.BloodDonation_DonorsDelete @DonorID
-*/
-
-/*
-CREATE PROCEDURE dbo.BloodDonation_BloodTypesDelete
+CREATE PROCEDURE dbo.BloodDonation_BloodTypes_Delete_ByID
 	   @BloodTypeID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM Donors 
-		WHERE Donors.BloodTypeID = @BloodTypeID
-		DELETE FROM BloodTypes
-		WHERE BloodTypes.BloodTypeID  = @BloodTypeID
+	
+		DELETE 
+		FROM BloodTypes
+		WHERE BloodTypeID  = @BloodTypeID
 END
 GO
 
-DECLARE @BloodTypeID uniqueidentifier = '  '
-EXECUTE dbo.BloodDonation_BloodTypesDelete @BloodTypeID
-*/
 
-/*
 CREATE PROCEDURE dbo.BloodDonation_CampaignsDelete
 	   @CampaignID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM RegisterCampaigns 
-		WHERE RegisterCampaigns.CampaignID = @CampaignID
-		DELETE FROM Campaigns
+	
+		DELETE
+		FROM Campaigns
 		WHERE Campaigns.CampaignID  = @CampaignID
 END
 GO
-
-DECLARE @CampaignID uniqueidentifier = '  '
-EXECUTE dbo.BloodDonation_CampaignsDelete @CampaignID
-*/
 
 CREATE PROCEDURE dbo.BloodDonation_BloodBanksDelete
 	   @BloodBankID uniqueidentifier
 AS
 BEGIN
-		DELETE FROM ColectionPoints 
-		WHERE ColectionPoints.BloodBankID = @BloodBankID
-		DELETE FROM BloodBanks
+		
+		DELETE 
+		FROM BloodBanks
 		WHERE BloodBanks.BloodBankID  = @BloodBankID
 END
 GO
 
-DECLARE @BloodBankID uniqueidentifier = '  '
-EXECUTE dbo.BloodDonation_BloodBanksDelete @BloodBankID
-
-
-
-/*
-delete  from  Donors 
-where
-	  ( select * 
-		FROM BloodTypes a
-		INNER JOIN Donors  b ON a.BloodTypeID = b.BloodTypeID
-		WHERE b.BloodTypeID = '51F1EB5D-97AE-4E57-AD93-4F084C3F2FF2'
-		and b.DonorID = '08A53EA9-6FA8-4794-B833-318849721FEA' );
-		
-		--WHERE b.BloodTypeID = @BloodTypeID
-		*/

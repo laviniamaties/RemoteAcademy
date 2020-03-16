@@ -5,7 +5,7 @@ namespace Model
     public class BloodType
     {
         public Guid ID { get; set; }
-        public string bloodType { get; set; }
+        public string Type { get; set; }
 
 
         public BloodType()
@@ -13,10 +13,10 @@ namespace Model
 
         }
 
-        public BloodType(Guid id, string bloodType)
+        public BloodType(Guid id, string type)
         {
-            this.ID = id;
-            this.bloodType = bloodType;
+            ID = id;
+            Type = type;
         }
     }
 }

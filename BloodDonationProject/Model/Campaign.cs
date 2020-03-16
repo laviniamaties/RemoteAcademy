@@ -5,10 +5,10 @@ namespace Model
     public class Campaign
     {
         public Guid ID { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
 
         public Campaign()
@@ -18,11 +18,11 @@ namespace Model
 
         public Campaign(Guid id, string name, string description, DateTime startDate, DateTime endDate)
         {
-            this.ID = id;
-            this.name = name;
-            this.description = description;
-            this.startDate = startDate;
-            this.endDate = endDate;
+            ID = id;
+            Name = name;
+            Description = description;
+            StartDate = startDate;
+            EndDate = endDate;
 
         }
     }

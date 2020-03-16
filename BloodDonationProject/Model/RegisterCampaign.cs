@@ -2,8 +2,8 @@
 {
     public class RegisterCampaign
     {
-        public CollectionPoint collectionPointID;
-        public Campaign campaignID;
+        public CollectionPoint CollectionPointID { set; get; } 
+        public Campaign CampaignID { get; set; }
 
         public RegisterCampaign()
         {
