@@ -60,7 +60,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid bloodUid, string bloodType)
+        public void Update(Guid bloodUid, string type)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -70,7 +70,7 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", bloodUid));
-                    command.Parameters.Add(new SqlParameter("@BloodType", bloodType));
+                    command.Parameters.Add(new SqlParameter("@BloodType", type));
                     command.CommandText = BLOOD_TYPES_UPDATE_BY_ID;
 
                     command.ExecuteNonQuery();
@@ -78,7 +78,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddBloodType(Guid bloodUid, string bloodType)
+        public void AddBloodType(Guid bloodUid, string type)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -88,7 +88,7 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", bloodUid));
-                    command.Parameters.Add(new SqlParameter("@BloodType", bloodType));
+                    command.Parameters.Add(new SqlParameter("@BloodType", type));
                     command.CommandText = BLOOD_TYPES_CREATE_BY_ID;
 
                     command.ExecuteNonQuery();

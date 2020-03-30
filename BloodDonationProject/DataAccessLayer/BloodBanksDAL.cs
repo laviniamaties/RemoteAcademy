@@ -11,7 +11,7 @@ namespace DataAccessLayer
     public class BloodBanksDAL
     {
         private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
-        private const string BLOOD_BANKS_READ_BY_GUID = "dbo.BloodDonation_BloodBank_ReadByID";
+        private const string BLOOD_BANKS_READ_BY_GUID = "dbo.BloodDonation_BloodBank_ReadByGUID";
         private const string BLOOD_BANKS_DELETE_BY_ID = "dbo.BloodDonation_BloodBanksDelete";
         private const string BLOOD_BANKS_UPDATE_BY_ID = "dbo.BloodDonation_BloodBanksUpdate";
         private const string BLOOD_BANKS_CREATE_BY_ID = "dbo.BloodDonation_BloodBanksCreate";
@@ -60,8 +60,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid bloodBankUid, string name, string addresse, string city, string country,
-            string phoneNumber, string emailAddresse)
+        public void Update(Guid bloodBankUid, BloodBank bloodBank)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -71,12 +70,12 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBankUid));
-                    command.Parameters.Add(new SqlParameter("@Name", name));
-                    command.Parameters.Add(new SqlParameter("@Address", addresse));
-                    command.Parameters.Add(new SqlParameter("@City", city));
-                    command.Parameters.Add(new SqlParameter("@Country", country));
-                    command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNumber));
-                    command.Parameters.Add(new SqlParameter("@EmailAddress", emailAddresse));
+                    command.Parameters.Add(new SqlParameter("@Name", bloodBank.Name));
+                    command.Parameters.Add(new SqlParameter("@Address", bloodBank.Addresse));
+                    command.Parameters.Add(new SqlParameter("@City", bloodBank.City));
+                    command.Parameters.Add(new SqlParameter("@Country", bloodBank.Country));
+                    command.Parameters.Add(new SqlParameter("@PhoneNumber", bloodBank.PhoneNumber));
+                    command.Parameters.Add(new SqlParameter("@EmailAddress", bloodBank.EmailAddresse));
                     command.CommandText = BLOOD_BANKS_UPDATE_BY_ID;
 
                     command.ExecuteNonQuery();
@@ -84,8 +83,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddBloodBank(Guid bloodBankUid, string name, string addresse, string city, string country, 
-            string phoneNumber, string emailAddresse)
+        public void AddBloodBank(Guid bloodBankUid, BloodBank bloodBank)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -95,12 +93,12 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBankUid));
-                    command.Parameters.Add(new SqlParameter("@Name", name));
-                    command.Parameters.Add(new SqlParameter("@Address", addresse));
-                    command.Parameters.Add(new SqlParameter("@City",city));
-                    command.Parameters.Add(new SqlParameter("@Country", country));
-                    command.Parameters.Add(new SqlParameter("@PhoneNumber", phoneNumber));
-                    command.Parameters.Add(new SqlParameter("@EmailAddress", emailAddresse));
+                    command.Parameters.Add(new SqlParameter("@Name", bloodBank.Name));
+                    command.Parameters.Add(new SqlParameter("@Address", bloodBank.Addresse));
+                    command.Parameters.Add(new SqlParameter("@City",bloodBank.City));
+                    command.Parameters.Add(new SqlParameter("@Country", bloodBank.Country));
+                    command.Parameters.Add(new SqlParameter("@PhoneNumber", bloodBank.PhoneNumber));
+                    command.Parameters.Add(new SqlParameter("@EmailAddress", bloodBank.EmailAddresse));
                     command.CommandText = BLOOD_BANKS_CREATE_BY_ID;
 
                     command.ExecuteNonQuery();

@@ -47,6 +47,8 @@
     <Compile Include="CollectionPointsDAL.cs" />
     <Compile Include="DonorsDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterCampaignsDAL.cs" />
+    <Compile Include="RegistersDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

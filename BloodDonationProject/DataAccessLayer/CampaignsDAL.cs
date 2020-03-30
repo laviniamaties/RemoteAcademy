@@ -11,7 +11,7 @@ namespace DataAccessLayer
     public class CampaignsDAL
     {
         private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
-        private const string CAMPAIGN_READ_BY_GUID = "dbo.BloodDonation_Campaigns_ReadByID";
+        private const string CAMPAIGN_READ_BY_GUID = "dbo.BloodDonation_Campaigns_ReadByGUID";
         private const string CAMPAIGN_DELETE_BY_ID = "dbo.BloodDonation_CampaignsDelete";
         private const string CAMPAIGN_UPDATE_BY_ID = "dbo.BloodDonation_CampaignsUpdate";
         private const string CAMPAIGN_CREATE_BY_ID = "dbo.BloodDonation_CampaignsCreate";
@@ -60,7 +60,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid campaignUid, string name, string description, DateTime startDate, DateTime endDate)
+        public void Update(Guid campaignUid, Campaign campaign)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -70,10 +70,10 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@CampaignID", campaignUid));
-                    command.Parameters.Add(new SqlParameter("@Name", name));
-                    command.Parameters.Add(new SqlParameter("@Description", description));
-                    command.Parameters.Add(new SqlParameter("@StartDate", startDate));
-                    command.Parameters.Add(new SqlParameter("@EndDate", endDate));
+                    command.Parameters.Add(new SqlParameter("@Name", campaign.Name));
+                    command.Parameters.Add(new SqlParameter("@Description", campaign.Description));
+                    command.Parameters.Add(new SqlParameter("@StartDate", campaign.StartDate));
+                    command.Parameters.Add(new SqlParameter("@EndDate", campaign.EndDate));
                     command.CommandText = CAMPAIGN_UPDATE_BY_ID;
 
                     command.ExecuteNonQuery();
@@ -81,7 +81,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddCampaign(Guid campaignUid, string name, string description, DateTime startDate, DateTime endDate)
+        public void AddCampaign(Guid campaignUid, Campaign campaign)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -91,10 +91,10 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@CampaignID", campaignUid));
-                    command.Parameters.Add(new SqlParameter("@Name", name));
-                    command.Parameters.Add(new SqlParameter("@Description", description));
-                    command.Parameters.Add(new SqlParameter("@StartDate", startDate));
-                    command.Parameters.Add(new SqlParameter("@EndDate", endDate));
+                    command.Parameters.Add(new SqlParameter("@Name", campaign.Name));
+                    command.Parameters.Add(new SqlParameter("@Description", campaign.Description));
+                    command.Parameters.Add(new SqlParameter("@StartDate", campaign.StartDate));
+                    command.Parameters.Add(new SqlParameter("@EndDate", campaign.EndDate));
                     command.CommandText = CAMPAIGN_CREATE_BY_ID;
 
                     command.ExecuteNonQuery();

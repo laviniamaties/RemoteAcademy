@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -18,6 +19,8 @@ namespace Model
         public DateTime Birthday { get; set; }
 
         public BloodType BloodType { get; set; }
+
+        public ICollection<CollectionPoint> CollectionPoints { set; get; }
 
         public Donor()
         {

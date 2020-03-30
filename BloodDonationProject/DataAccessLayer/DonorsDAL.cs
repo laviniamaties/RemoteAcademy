@@ -11,8 +11,10 @@ namespace DataAccessLayer
     public class DonorsDAL
     {
         private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
-        private const string DONORS_READ_BY_GUID = "dbo.BloodDonation_Donors_ReadByID";
+        private const string DONORS_READ_BY_GUID = "dbo.BloodDonation_Donors_ReadByGUID";
         private const string DONORS_DELETE_BY_GUID = "dbo.BloodDonation_DonorsDelete";
+        private const string DONORS_UPDATE_BY_ID = "dbo.BloodDonation_DonorsUpdate";
+        private const string DONORS_CREATE_BY_ID = "dbo.BloodDonation_DonorsCreate";
 
 
 
@@ -58,6 +60,59 @@ namespace DataAccessLayer
                 }
             }
         }
+
+        public void Update(Guid donorUid, Donor donor)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
+                    command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
+                    command.Parameters.Add(new SqlParameter("@Type", donor.Type));
+                    command.Parameters.Add(new SqlParameter("@FirstName", donor.FirstName));
+                    command.Parameters.Add(new SqlParameter("@LastName", donor.LastName));
+                    command.Parameters.Add(new SqlParameter("@Address", donor.Address));
+                    command.Parameters.Add(new SqlParameter("@City", donor.City));
+                    command.Parameters.Add(new SqlParameter("@Country", donor.Country));
+                    command.Parameters.Add(new SqlParameter("@PhoneNumber", donor.PhoneNumber));
+                    command.Parameters.Add(new SqlParameter("@EmailAddress", donor.EmailAddress));
+                    command.CommandText = DONORS_UPDATE_BY_ID;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddDonors(Guid donorUid, Donor donor )
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
+                    command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
+                    command.Parameters.Add(new SqlParameter("@Type", donor.Type));
+                    command.Parameters.Add(new SqlParameter("@FirstName", donor.FirstName));
+                    command.Parameters.Add(new SqlParameter("@LastName", donor.LastName));
+                    command.Parameters.Add(new SqlParameter("@Address", donor.Address));
+                    command.Parameters.Add(new SqlParameter("@City", donor.City));
+                    command.Parameters.Add(new SqlParameter("@Country", donor.Country));
+                    command.Parameters.Add(new SqlParameter("@PhoneNumber", donor.PhoneNumber));
+                    command.Parameters.Add(new SqlParameter("@EmailAddress", donor.EmailAddress));
+                    command.CommandText = DONORS_CREATE_BY_ID;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         private Donor ConvertToModel(SqlDataReader dataReader)
         {

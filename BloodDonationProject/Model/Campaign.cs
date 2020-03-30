@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -10,15 +11,15 @@ namespace Model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+        public ICollection<CollectionPoint> CollectionPoint { get; set; }
 
         public Campaign()
         {
 
         }
 
-        public Campaign(Guid id, string name, string description, DateTime startDate, DateTime endDate)
+        public Campaign( string name, string description, DateTime startDate, DateTime endDate)
         {
-            ID = id;
             Name = name;
             Description = description;
             StartDate = startDate;

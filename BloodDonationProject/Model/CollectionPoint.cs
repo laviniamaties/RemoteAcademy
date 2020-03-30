@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -12,6 +13,10 @@ namespace Model
         public string PhoneNumber { get; set; }
         public string EmailAddresse { get; set; }
 
+        public ICollection<Donor> Donor { get; set; }
+        public ICollection<Campaign> Campaign  { get; set; }
+
+
 
         public BloodBank bloodBankID;
 
@@ -20,10 +25,10 @@ namespace Model
 
         }
 
-        public CollectionPoint(Guid id, string name, string addresse, string city, string country,
+        public CollectionPoint( string name, string addresse, string city, string country,
             string phoneNumber, string emailAddresse)
         {
-            ID = id;
+
             Name = name;
             Addresse = addresse;
             City = city;
