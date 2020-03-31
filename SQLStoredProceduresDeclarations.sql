@@ -75,20 +75,21 @@ EXECUTE dbo.[BloodDonation_CollectionPointsCreate]  @CollectionpointID,
 	   @EmailAddress 
 
 -- 6. CREATE [BloodDonation_RegistersCreate]
+
 DECLARE 
-		@DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA',
-		@CollectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
+		@DonorID uniqueidentifier = 'A38AE9F7-2D8E-46FB-A192-0960FD241154',
+		@ColectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
 	
 EXECUTE dbo.[BloodDonation_RegistersCreate]   @DonorID  ,
-	   @CollectionPointID
+	   @ColectionPointID
 
 -- 7. CREATE [BloodDonation_RegisterCampaignsCreate]
 DECLARE 
-		@CampaignID uniqueidentifier = 'D520C9D0-F194-4287-A8CD-31347FB70DEF',
-	    @CollectionPointID uniqueidentifier  ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
+		@ColectionPointID uniqueidentifier ='2E8E56C0-2CC8-4652-AA0C-493926883749' ,
+		@CampaignID uniqueidentifier = 'C948309E-8B9B-46F7-A910-70BD22778A74' 
 	
 EXECUTE dbo.[BloodDonation_RegisterCampaignsCreate]  @CampaignID ,
-	    @CollectionPointID
+	    @ColectionPointID
 
 -- UPDATE 
 --1. BloodDonation_BloodTypesUpdate
@@ -168,12 +169,26 @@ EXECUTE dbo.[BloodDonation_CollectionPointsUpdate]  @CollectionpointID,
 	   @EmailAddress 
 
 -- 6. [BloodDonation_RegistersUpdate]
+
 DECLARE 
-		@DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA',
-		@CollectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
+		@DonorID uniqueidentifier = 'A38AE9F7-2D8E-46FB-A192-0960FD241154',
+		@ColectionPointID uniqueidentifier ='2E8E56C0-2CC8-4652-AA0C-493926883749'
 	
 EXECUTE dbo.[BloodDonation_RegistersUpdate]   @DonorID  ,
-	   @CollectionPointID
+	   @ColectionPointID
+
+-- 7. [BloodDonation_RegisterCampaignsUpdate]
+select * from Campaigns
+select * from ColectionPoints where ColectionPointID = '266BD326-CF99-43CE-B5C1-C6BB59AFD6AA'
+select * from RegisterCampaigns where ColectionPointID = '266BD326-CF99-43CE-B5C1-C6BB59AFD6AA'
+
+DECLARE 
+		@ColectionPointID uniqueidentifier ='101AA81D-9619-4863-B24E-BD073BDC3A6B' ,
+		@CampaignID uniqueidentifier = 'C948309E-8B9B-46F7-A910-70BD22778A74' 
+	
+EXECUTE dbo.BloodDonation_RegisterCampaignsUpdate   
+	   @CampaignID  , @ColectionPointID
+
 
 -- READ BY ID 
 -- 1. BloodDonation_BloodTypes_ReadByGUID

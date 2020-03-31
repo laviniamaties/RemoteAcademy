@@ -161,7 +161,7 @@ SET @CampaignID = NEWID()
 GO
 
 CREATE PROCEDURE dbo.BloodDonation_CollectionPointsCreate
-	@CollectionpointID uniqueidentifier,
+	@ColectionpointID uniqueidentifier,
 	@BloodBankID uniqueidentifier ,
 	@Name nvarchar(50) ,
 	@Address nvarchar(150) ,
@@ -171,8 +171,8 @@ CREATE PROCEDURE dbo.BloodDonation_CollectionPointsCreate
 	@EmailAddress nvarchar(50)
 AS
 BEGIN
-INSERT INTO CollectionPoints(
-	CollectionpointID, 
+INSERT INTO ColectionPoints(
+	ColectionpointID, 
 	BloodBankID ,
 	Name ,
 	Address  ,
@@ -182,7 +182,7 @@ INSERT INTO CollectionPoints(
 	EmailAddress 
 	   )
     VALUES (
-	   @CollectionpointID, 
+	   @ColectionpointID, 
 	   @BloodBankID  ,
 	   @Name ,
 	   @Address  ,
@@ -191,7 +191,7 @@ INSERT INTO CollectionPoints(
 	   @PhoneNumber ,
 	   @EmailAddress 
 	  )
-SET @CollectionpointID = NEWID()
+SET @ColectionpointID = NEWID()
 	SELECT 
 		BloodBankID = @BloodBankID, 
 	    Name = @Name,
@@ -201,23 +201,23 @@ SET @CollectionpointID = NEWID()
 	    PhoneNumber = @PhoneNumber,
 	    EmailAddress = @EmailAddress 
 
-	FROM CollectionPoints  
-	WHERE  @CollectionpointID = @CollectionpointID
+	FROM ColectionPoints  
+	WHERE  @ColectionpointID = @ColectionpointID
 	END
 GO
 
 CREATE PROCEDURE dbo.BloodDonation_RegistersCreate
 	@DonorID uniqueidentifier ,
-	@CollectionPointID uniqueidentifier 
+	@ColectionPointID uniqueidentifier 
 AS
 BEGIN
 INSERT INTO Registers(
 	DonorID ,
-	CollectionPointID
+	ColectionPointID
 	   )
     VALUES (
 	   @DonorID  ,
-	   @CollectionPointID
+	   @ColectionPointID
 	  )
  
 	END
@@ -225,16 +225,16 @@ GO
 
 CREATE PROCEDURE dbo.BloodDonation_RegisterCampaignsCreate
 	  @CampaignID uniqueidentifier ,
-	  @CollectionPointID uniqueidentifier 
+	  @ColectionPointID uniqueidentifier 
 AS
 BEGIN
 INSERT INTO RegisterCampaigns(
 	 CampaignID ,
-	 CollectionPointID
+	 ColectionPointID
 	   )
     VALUES (
 	   @CampaignID ,
-	   @CollectionPointID 
+	   @ColectionPointID 
 	  )
 	END
 GO
@@ -356,17 +356,30 @@ GO
 
 CREATE PROCEDURE dbo.BloodDonation_RegistersUpdate
 	@DonorID uniqueidentifier ,
-	@CollectionPointID uniqueidentifier 
+	@ColectionPointID uniqueidentifier 
 AS
 BEGIN
 UPDATE  Registers
 SET 
 	DonorID = @DonorID  ,
-	CollectionPointID = @CollectionPointID
-WHERE DonorID = @DonorID  AND CollectionPointID = @CollectionPointID
+	ColectionPointID = @ColectionPointID
+WHERE DonorID = @DonorID  --AND ColectionPointID = @ColectionPointID
 END
 GO
 
+CREATE PROCEDURE dbo.BloodDonation_RegisterCampaignsUpdate
+	@CampaignID uniqueidentifier ,
+	@ColectionPointID uniqueidentifier 
+	
+AS
+BEGIN
+UPDATE  RegisterCampaigns
+SET 
+    CampaignID = @CampaignID  ,
+	ColectionPointID = @ColectionPointID 
+WHERE CampaignID = @CampaignID --AND ColectionPointID = @ColectionPointID 
+END
+GO
 
 --READ BY ID
 CREATE PROCEDURE dbo.BloodDonation_BloodTypes_ReadByID
@@ -375,11 +388,12 @@ CREATE PROCEDURE dbo.BloodDonation_BloodTypes_ReadByID
 )
 AS
 BEGIN
-	SELECT  t.BloodType, d.FirstName
+--	SELECT  t.BloodType, d.FirstName
+	SELECT * 
 	FROM BloodTypes t
 		INNER JOIN Donors  d ON d.BloodTypeID = t.BloodTypeID
 	WHERE t.BloodTypeID = @BloodTypeID
-	GROUP BY d.FirstName,  t.BloodType
+--	GROUP BY d.FirstName,  t.BloodType
 	END
 GO
 
@@ -414,23 +428,49 @@ BEGIN
 	END
 GO
 
-CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadByID
+CREATE PROCEDURE dbo.BloodDonation_Donors_ReadByGUID
 (
-	@CollectionPointID uniqueidentifier
+	@DonorID uniqueidentifier
 )
 AS
 BEGIN
-	SELECT p.CollectionPointID, d.FirstName,  b.Name as Bank, c.Name as Campaign
-	FROM CollectionPoints p  
-		INNER JOIN BloodBanks b  ON b.BloodBankID = p.BloodBankID
-		INNER JOIN Registers r ON r.CollectionPointID = p.CollectionPointID
-		INNER JOIN Donors d ON d.DonorID = r.DonorID 
-		INNER JOIN RegisterCampaigns rc ON rc.CollectionPointID = p.CollectionPointID
-		INNER JOIN Campaigns c ON rc.CampaignID  = c.CampaignID 
-	WHERE p.CollectionPointID = @ColectionPointID
-	GROUP BY p.CollectionPointID, d.FirstName,  b.Name , c.Name 
+	SELECT *
+	FROM Donors d 
+	WHERE DonorID = @DonorID
 	END
 GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadByID
+(
+	@ColectionPointID uniqueidentifier
+)
+AS
+BEGIN
+	SELECT p.ColectionPointID, d.FirstName,  b.Name as Bank, c.Name as Campaign
+	FROM ColectionPoints p  
+		INNER JOIN BloodBanks b  ON b.BloodBankID = p.BloodBankID
+		INNER JOIN Registers r ON r.ColectionPointID = p.ColectionPointID
+		INNER JOIN Donors d ON d.DonorID = r.DonorID 
+		INNER JOIN RegisterCampaigns rc ON rc.ColectionPointID = p.ColectionPointID
+		INNER JOIN Campaigns c ON rc.CampaignID  = c.CampaignID 
+	WHERE p.ColectionPointID = @ColectionPointID
+	GROUP BY p.ColectionPointID, d.FirstName,  b.Name , c.Name 
+	END
+GO
+
+CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadByGUID
+(
+	@ColectionPointID uniqueidentifier
+)
+AS
+BEGIN
+	SELECT *
+	FROM ColectionPoints p 
+	WHERE ColectionPointID = @ColectionPointID
+	END
+GO
+
 
 CREATE PROCEDURE dbo.BloodDonation_Campaigns_ReadByID
 (
@@ -447,6 +487,19 @@ BEGIN
 	END
 GO
 
+CREATE PROCEDURE dbo.BloodDonation_Campaigns_ReadByGUID
+(
+	@CampaignID uniqueidentifier
+)
+AS
+BEGIN
+	SELECT  *
+	FROM Campaigns c 
+	WHERE CampaignID = @CampaignID
+	END
+GO
+
+
 CREATE PROCEDURE dbo.BloodDonation_BloodBank_ReadByID
 (
 	@BloodBankID uniqueidentifier
@@ -455,9 +508,21 @@ AS
 BEGIN
 	SELECT  b.Name as Bank ,p.Name as ColectionPoint 
 	FROM BloodBanks b  
-		INNER JOIN CollectionPoints p ON p.BloodBankID = b.BloodBankID 
+		INNER JOIN ColectionPoints p ON p.BloodBankID = b.BloodBankID 
 	WHERE b.BloodBankID  =  @BloodBankID
 	GROUP BY b.Name  ,p.Name 
+	END
+GO
+
+CREATE PROCEDURE dbo.BloodDonation_BloodBank_ReadByGUID
+(
+	@BloodBankID uniqueidentifier
+)
+AS
+BEGIN
+	SELECT  *
+	FROM BloodBanks b  
+	WHERE BloodBankID = @BloodBankID
 	END
 GO
 
