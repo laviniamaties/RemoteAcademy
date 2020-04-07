@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class CampaignsDAL
+    public class CampaignsDAL: IDAL, ICampaignsDAL
     {
-        private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
+        private  string _connectionString ;
         private const string CAMPAIGN_READ_BY_GUID = "dbo.BloodDonation_Campaigns_ReadByGUID";
         private const string CAMPAIGN_DELETE_BY_ID = "dbo.BloodDonation_CampaignsDelete";
         private const string CAMPAIGN_UPDATE_BY_ID = "dbo.BloodDonation_CampaignsUpdate";
         private const string CAMPAIGN_CREATE_BY_ID = "dbo.BloodDonation_CampaignsCreate";
 
+        public CampaignsDAL(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public Campaign  ReadByUid(Guid campaignUid)
         {

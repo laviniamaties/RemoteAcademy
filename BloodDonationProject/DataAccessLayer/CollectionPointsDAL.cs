@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class CollectionPointsDAL
+    public class CollectionPointsDAL: IDAL, ICollectionPointsDAL
     {
-        private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
+        private  string _connectionString ;
         private const string COLLECTION_POINTS_READ_BY_GUID = "dbo.BloodDonation_ColectionPoints_ReadByGUID";
         private const string COLLECTION_POINTS_DELETE_BY_ID = "dbo.BloodDonation_ColectionPointsDelete";
         private const string COLLECTION_POINTS_UPDATE_BY_ID = "dbo.BloodDonation_CollectionPointsUpdate";
         private const string COLLECTION_POINTS_CREATE_BY_ID = "dbo.BloodDonation_CollectionPointsCreate";
 
+        public CollectionPointsDAL(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public CollectionPoint ReadByUid(Guid collectionPointUid)
         {

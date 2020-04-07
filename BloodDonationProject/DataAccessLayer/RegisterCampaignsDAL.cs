@@ -4,11 +4,16 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    public class RegisterCampaignsDAL
+    public class RegisterCampaignsDAL: IRegisterCampaignsDAL
     {
-        private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
+        private  string _connectionString ;
         private const string REGISTER_CAMPAIGNS_UPDATE_BY_ID = "dbo.BloodDonation_RegisterCampaignsUpdate";
         private const string REGISTER_CAMPAIGNS_CREATE_BY_ID = "dbo.BloodDonation_RegisterCampaignsCreate";
+
+        public RegisterCampaignsDAL(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public void Update( Guid campaignUid, Guid collectionPointUid)
         {

@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class BloodTypesDAL
+    public class BloodTypesDAL: IDAL, IBloodTypesDAL
     {
-        private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
+        private  string _connectionString ;
         private const string BLOOD_TYPES_READ_BY_GUID = "dbo.BloodDonation_BloodTypes_ReadByGUID";
         private const string BLOOD_TYPES_DELETE_BY_ID = "dbo.BloodDonation_BloodTypesDelete";
         private const string BLOOD_TYPES_UPDATE_BY_ID = "dbo.BloodDonation_BloodTypesUpdate";
         private const string BLOOD_TYPES_CREATE_BY_ID = "dbo.BloodDonation_BloodTypesCreate";
 
+        public BloodTypesDAL( string connectionString)
+        {
+            _connectionString = connectionString;
+        }
                
         public BloodType ReadByUid(Guid bloodUid)
         {
@@ -60,7 +64,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid bloodUid, string type)
+        public void Update(Guid bloodUid, BloodType bloodType)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -70,7 +74,7 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", bloodUid));
-                    command.Parameters.Add(new SqlParameter("@BloodType", type));
+                    command.Parameters.Add(new SqlParameter("@BloodType", bloodType.Type));
                     command.CommandText = BLOOD_TYPES_UPDATE_BY_ID;
 
                     command.ExecuteNonQuery();
@@ -78,7 +82,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddBloodType(Guid bloodUid, string type)
+        public void AddBloodType(Guid bloodUid, BloodType bloodType)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -88,7 +92,7 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", bloodUid));
-                    command.Parameters.Add(new SqlParameter("@BloodType", type));
+                    command.Parameters.Add(new SqlParameter("@BloodType", bloodType.Type));
                     command.CommandText = BLOOD_TYPES_CREATE_BY_ID;
 
                     command.ExecuteNonQuery();

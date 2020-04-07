@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class BloodBanksDAL
+    public class BloodBanksDAL: IDAL, IBloodBanksDAL
     {
-        private const string _connectionString = "Server=LAVINIA-PC;Database=BloodDonation;Trusted_Connection=True;";
+        private  string _connectionString ;
         private const string BLOOD_BANKS_READ_BY_GUID = "dbo.BloodDonation_BloodBank_ReadByGUID";
         private const string BLOOD_BANKS_DELETE_BY_ID = "dbo.BloodDonation_BloodBanksDelete";
         private const string BLOOD_BANKS_UPDATE_BY_ID = "dbo.BloodDonation_BloodBanksUpdate";
         private const string BLOOD_BANKS_CREATE_BY_ID = "dbo.BloodDonation_BloodBanksCreate";
 
+        public BloodBanksDAL(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public BloodBank ReadByUid(Guid bloodBankUid)
         {

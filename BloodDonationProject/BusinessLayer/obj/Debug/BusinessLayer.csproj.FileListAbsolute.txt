@@ -1,0 +1,10 @@
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\BusinessLayer.dll
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\BusinessLayer.pdb
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\DataAccessLayer.dll
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\Model.dll
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\bin\Debug\Model.pdb
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\obj\Debug\BusinessLayer.dll
+F:\RemoteAcademy\BloodDonationProject\BusinessLayer\obj\Debug\BusinessLayer.pdb

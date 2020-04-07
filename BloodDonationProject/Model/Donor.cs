@@ -7,6 +7,7 @@ namespace Model
     {
       
         public Guid ID { get; set; }
+        public Guid BloodTypeID { get; set; }
         public string Sex { get; set; }
         public string Type { get; set; }
         public string FirstName { get; set; }
@@ -16,7 +17,7 @@ namespace Model
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set;}
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
 
         public BloodType BloodType { get; set; }
 
@@ -28,9 +29,10 @@ namespace Model
         }
 
 
-        public Donor(string sex , string type, string firstName, string lastName, string address, string city, 
-            string country, string phoneNumber, string emailAddress, DateTime birthday , BloodType bloodType)
+        public Donor(Guid bloodTypeID, string sex , string type, string firstName, string lastName, string address, string city, 
+            string country, string phoneNumber, string emailAddress, string birthDay)
         {
+            BloodTypeID = bloodTypeID;
             Sex = sex;
             Type = type;
             FirstName = firstName;
@@ -40,8 +42,8 @@ namespace Model
             Country = country;
             PhoneNumber = phoneNumber;
             EmailAddress = emailAddress;
-            Birthday = birthday;
-            BloodType = bloodType;
+            Birthday = birthDay;
+            
         }
 
     }
