@@ -8,10 +8,7 @@ namespace Model
         public string Type { get; set; }
 
 
-        public BloodType()
-        {
-
-        }
+        public BloodType() {}
 
         public BloodType(Guid id, string type)
         {

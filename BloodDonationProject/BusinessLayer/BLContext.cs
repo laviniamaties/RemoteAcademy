@@ -13,7 +13,7 @@ namespace BusinessLayer
         private RegisterCampaignsBL _registerCampaignsBL;
         private RegistersBL _registersBL;
 
-        public BloodBanksBL BloodBanksDAL
+        public BloodBanksBL BloodBanksBL
         {
             get
             {
@@ -25,7 +25,7 @@ namespace BusinessLayer
             }
         }
 
-        public BloodTypesBL BloodTypesDAL
+        public BloodTypesBL BloodTypesBL
         {
             get
             {
@@ -37,7 +37,7 @@ namespace BusinessLayer
             }
         }
 
-        public CampaignsBL CampaignsDAL
+        public CampaignsBL CampaignsBL
         {
             get
             {
@@ -49,7 +49,7 @@ namespace BusinessLayer
             }
         }
 
-        public CollectionPointsBL CollectionPointsDAL
+        public CollectionPointsBL CollectionPointsBL
         {
             get
             {
@@ -61,7 +61,7 @@ namespace BusinessLayer
             }
         }
 
-        public DonorsBL DonorsDAL
+        public DonorsBL DonorsBL
         {
             get
             {
@@ -72,7 +72,7 @@ namespace BusinessLayer
                 return _donorsBL;
             }
         }
-        public RegisterCampaignsBL RegisterCampaignsDAL
+        public RegisterCampaignsBL RegisterCampaignsBL
         {
             get
             {
@@ -84,7 +84,7 @@ namespace BusinessLayer
             }
         }
 
-        public RegistersBL RegistersDAL
+        public RegistersBL RegistersBL
         {
             get
             {

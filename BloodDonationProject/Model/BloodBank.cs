@@ -13,10 +13,7 @@ namespace Model
         public string EmailAddresse { get; set; }
 
 
-        public BloodBank()
-        {
-
-        }
+        public BloodBank(){}
 
         public BloodBank( string name, string addresse, string city, string country,
             string phoneNumber, string emailAddresse)

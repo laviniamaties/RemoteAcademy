@@ -1,16 +1,22 @@
 ﻿using DataAccessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessLayer
 {
-    public class CollectionPointsBL: IBL, ICollectionPointsBL
+    public class CollectionPointsBL: IBL
     {
         private CollectionPointsDAL _collectionPointsDAL;
 
         public CollectionPointsBL(CollectionPointsDAL collectionPointsDAL)
         {
             _collectionPointsDAL = collectionPointsDAL;
+        }
+
+        public List<CollectionPoint> ReadAll()
+        {
+            return _collectionPointsDAL.ReadAll();
         }
         public CollectionPoint ReadByUid(Guid uid)
         {

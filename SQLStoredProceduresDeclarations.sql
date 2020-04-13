@@ -209,8 +209,11 @@ EXECUTE dbo.BloodDonation_BloodTypes_ReadByGUID @BloodTypeID
 --	GROUP BY d.DonorID, d.FirstName,  t.BloodType, r.DonorID
 
 --declarations
-DECLARE @DonorID uniqueidentifier = '08A53EA9-6FA8-4794-B833-318849721FEA'
-EXECUTE dbo.BloodDonation_Donors_ReadByID  @DonorID
+DECLARE @DonorID uniqueidentifier = '52F23F8E-183A-43DB-ADA7-003C75AC93A6'
+EXECUTE dbo.[BloodDonation_Donors_ReadByGUID]  @DonorID
+
+select * from Donors
+select * from BloodTypes
 
 -- 3. BloodDonation_ColectionPoints_ReadByID
 --declarations
@@ -259,3 +262,15 @@ EXECUTE dbo.BloodDonation_CampaignsDelete @CampaignID
 -- 5. BloodDonation_BloodBanksDelete
 DECLARE @BloodBankID uniqueidentifier = '  '
 EXECUTE dbo.BloodDonation_BloodBanksDelete @BloodBankID
+
+-- READ ALL 
+-- 1. BloodDonation_BloodTypes_ReadAll
+EXECUTE dbo.BloodDonation_BloodTypes_ReadAll
+-- 2. BloodDonation_Donors_ReadAll
+EXECUTE dbo.BloodDonation_Donors_ReadAll
+-- 3. BloodDonation_CollectionPoints_ReadAll
+EXECUTE dbo.BloodDonation_CollectionPoints_ReadAll
+-- 4. BloodDonation_Campaigns_ReadAll
+EXECUTE dbo.BloodDonation_Campaigns_ReadAll
+-- 5. BloodDonation_BloodBank_ReadAll
+EXECUTE dbo.BloodDonation_BloodBank_ReadAll

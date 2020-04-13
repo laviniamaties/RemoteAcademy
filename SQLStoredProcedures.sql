@@ -21,7 +21,6 @@ SET @BloodTypeID = NEWID()
 	END
 GO
 
-
 CREATE PROCEDURE dbo.BloodDonation_DonorsCreate
 	   @DonorID uniqueidentifier ,
 	   @BloodTypeID uniqueidentifier,
@@ -34,7 +33,7 @@ CREATE PROCEDURE dbo.BloodDonation_DonorsCreate
  	   @Country nvarchar(50),
  	   @PhoneNumber nvarchar(50),
 	   @EmailAddress nvarchar(50),
-	   @BirthDay date
+	   @BirthDay nvarchar(50)
 AS
 BEGIN
 INSERT INTO Donors(
@@ -160,6 +159,7 @@ SET @CampaignID = NEWID()
 	END
 GO
 
+
 CREATE PROCEDURE dbo.BloodDonation_CollectionPointsCreate
 	@ColectionpointID uniqueidentifier,
 	@BloodBankID uniqueidentifier ,
@@ -253,6 +253,7 @@ WHERE   BloodTypeID = @BloodTypeID
 END
 GO
 
+
 CREATE PROCEDURE dbo.BloodDonation_DonorsUpdate 
 	   @DonorID uniqueidentifier ,
 	   @BloodTypeID uniqueidentifier,
@@ -265,7 +266,7 @@ CREATE PROCEDURE dbo.BloodDonation_DonorsUpdate
  	   @Country nvarchar(50),
  	   @PhoneNumber nvarchar(50),
 	   @EmailAddress nvarchar(50),
-	   @BirthDay date
+	   @BirthDay nvarchar(50)
 AS
 BEGIN
 UPDATE  Donors
@@ -328,8 +329,9 @@ SET
 	END
 GO
 
+
 CREATE PROCEDURE dbo.BloodDonation_CollectionPointsUpdate
-	@CollectionpointID uniqueidentifier,
+	@ColectionpointID uniqueidentifier,
 	@BloodBankID uniqueidentifier ,
 	@Name nvarchar(50) ,
 	@Address nvarchar(150) ,
@@ -339,9 +341,9 @@ CREATE PROCEDURE dbo.BloodDonation_CollectionPointsUpdate
 	@EmailAddress nvarchar(50)
 AS
 BEGIN
-UPDATE  CollectionPoints
+UPDATE  ColectionPoints
 SET 
-	CollectionpointID =  @CollectionpointID, 
+	ColectionpointID =  @ColectionpointID, 
 	BloodBankID = @BloodBankID  ,
 	Name = @Name ,
 	Address  =  @Address  ,
@@ -350,7 +352,7 @@ SET
 	PhoneNumber =  @PhoneNumber ,
 	EmailAddress = @EmailAddress 
 	   
-	WHERE  CollectionpointID = @CollectionpointID
+	WHERE  ColectionpointID = @ColectionpointID
 	END
 GO
 
@@ -583,5 +585,58 @@ BEGIN
 		FROM BloodBanks
 		WHERE BloodBanks.BloodBankID  = @BloodBankID
 END
+GO
+
+-- Read ALL
+
+CREATE PROCEDURE dbo.BloodDonation_BloodTypes_ReadAll
+
+AS
+BEGIN
+	SELECT * 
+	FROM BloodTypes t
+	END
+GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_Donors_ReadAll
+
+AS
+BEGIN
+
+	SELECT *
+	FROM Donors 
+	END
+GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadAll
+
+AS
+BEGIN
+	SELECT *
+	FROM ColectionPoints 
+	END
+GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_Campaigns_ReadAll
+
+AS
+BEGIN
+	SELECT  * 
+	FROM Campaigns  
+	END
+GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_BloodBank_ReadAll
+
+AS
+BEGIN
+	SELECT *  
+	FROM BloodBanks   
+		
+	END
 GO
 

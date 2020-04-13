@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class BloodTypesDAL: IDAL, IBloodTypesDAL
+    public class BloodTypesDAL: IDAL
     {
         private  string _connectionString ;
         private const string BLOOD_TYPES_READ_BY_GUID = "dbo.BloodDonation_BloodTypes_ReadByGUID";
+        private const string BLOOD_TYPES_READ_ALL = "dbo.BloodDonation_BloodTypes_ReadAll";
         private const string BLOOD_TYPES_DELETE_BY_ID = "dbo.BloodDonation_BloodTypesDelete";
         private const string BLOOD_TYPES_UPDATE_BY_ID = "dbo.BloodDonation_BloodTypesUpdate";
         private const string BLOOD_TYPES_CREATE_BY_ID = "dbo.BloodDonation_BloodTypesCreate";
@@ -20,7 +21,34 @@ namespace DataAccessLayer
         {
             _connectionString = connectionString;
         }
-               
+
+        public List<BloodType> ReadAll()
+        {
+            List<BloodType> bloodTypes = new List<BloodType>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = BLOOD_TYPES_READ_ALL;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            BloodType bloodType = new BloodType();
+                            bloodType = ConvertToModel(dataReader);
+                            bloodTypes.Add(bloodType);
+                        }
+                    }
+                }
+            }
+
+            return bloodTypes;
+        }
+
         public BloodType ReadByUid(Guid bloodUid)
         {
             BloodType bloodType = new BloodType();

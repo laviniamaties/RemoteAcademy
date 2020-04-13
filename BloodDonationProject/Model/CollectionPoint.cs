@@ -18,7 +18,7 @@ namespace Model
 
 
 
-        public BloodBank bloodBankID;
+        public Guid BloodBankID { get; set; }
 
         public CollectionPoint()
         {
@@ -26,7 +26,7 @@ namespace Model
         }
 
         public CollectionPoint( string name, string addresse, string city, string country,
-            string phoneNumber, string emailAddresse)
+            string phoneNumber, string emailAddresse, Guid bloodBankID)
         {
 
             Name = name;
@@ -35,6 +35,7 @@ namespace Model
             Country = country;
             PhoneNumber = phoneNumber;
             EmailAddresse = emailAddresse;
+            BloodBankID = bloodBankID;
 
         }
 

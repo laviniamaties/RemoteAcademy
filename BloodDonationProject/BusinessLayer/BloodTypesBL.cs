@@ -1,16 +1,22 @@
 ﻿using DataAccessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessLayer
 {
-    public class BloodTypesBL: IBL, IBloodTypesBL
+    public class BloodTypesBL: IBL
     {
         private BloodTypesDAL _bloodTypesDAL;
 
         public BloodTypesBL(BloodTypesDAL bloodTypesDAL)
         {
             _bloodTypesDAL = bloodTypesDAL;
+        }
+
+        public List<BloodType> ReadAll()
+        {
+            return _bloodTypesDAL.ReadAll();
         }
 
         public BloodType ReadByUid(Guid uid)
@@ -28,7 +34,6 @@ namespace BusinessLayer
         public void Delete(Guid id)
         {
             _bloodTypesDAL.DeleteByUid(id);
-
         }
 
     }

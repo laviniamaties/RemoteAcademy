@@ -1,10 +1,11 @@
 ﻿using DataAccessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessLayer
 {
-    public class DonorsBL: IBL, IDonorsBL
+    public class DonorsBL: IBL
     {
         private DonorsDAL _donorsDAL;
 
@@ -16,6 +17,10 @@ namespace BusinessLayer
         public Donor ReadByUid(Guid uid)
         {
             return _donorsDAL.ReadByUid(uid);
+        }
+        public List<Donor> ReadAll()
+        {
+            return _donorsDAL.ReadAll();
         }
         public void Update(Guid id, Donor donor)
         {

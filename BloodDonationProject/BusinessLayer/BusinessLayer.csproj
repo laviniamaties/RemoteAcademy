@@ -48,11 +48,6 @@
     <Compile Include="CollectionPointsBL.cs" />
     <Compile Include="DonorsBL.cs" />
     <Compile Include="IBL.cs" />
-    <Compile Include="IBloodBanksBL.cs" />
-    <Compile Include="IBloodTypesBL.cs" />
-    <Compile Include="ICampaignsBL.cs" />
-    <Compile Include="ICollectionPointsBL.cs" />
-    <Compile Include="IDonorsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterCampaignsBL.cs" />
     <Compile Include="RegistersBL.cs" />

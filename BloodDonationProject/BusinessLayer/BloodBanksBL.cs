@@ -1,10 +1,11 @@
 ﻿using DataAccessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessLayer
 {
-    public class BloodBanksBL: IBL, IBloodBanksBL
+    public class BloodBanksBL: IBL
     {
         private BloodBanksDAL _bloodBanksDAL;
 
@@ -16,6 +17,11 @@ namespace BusinessLayer
         public BloodBank ReadByUid(Guid uid)
         {
             return _bloodBanksDAL.ReadByUid(uid);
+        }
+
+        public List<BloodBank> ReadAll()
+        {
+            return _bloodBanksDAL.ReadAll();
         }
 
         public void Update(Guid id, BloodBank bloodBank)

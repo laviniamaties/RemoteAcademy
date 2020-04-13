@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    public class RegistersDAL: IRegistersDAL
+    public class RegistersDAL
     {
         private  string _connectionString ;
         private const string REGISTERS_UPDATE_BY_ID = "dbo.BloodDonation_RegistersUpdate";

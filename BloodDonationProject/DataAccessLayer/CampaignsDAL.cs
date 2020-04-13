@@ -2,16 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class CampaignsDAL: IDAL, ICampaignsDAL
+    public class CampaignsDAL: IDAL
     {
         private  string _connectionString ;
         private const string CAMPAIGN_READ_BY_GUID = "dbo.BloodDonation_Campaigns_ReadByGUID";
+        private const string CAMPAIGNS_READ_ALL = "dbo.BloodDonation_Campaigns_ReadAll";
         private const string CAMPAIGN_DELETE_BY_ID = "dbo.BloodDonation_CampaignsDelete";
         private const string CAMPAIGN_UPDATE_BY_ID = "dbo.BloodDonation_CampaignsUpdate";
         private const string CAMPAIGN_CREATE_BY_ID = "dbo.BloodDonation_CampaignsCreate";
@@ -20,7 +18,32 @@ namespace DataAccessLayer
         {
             _connectionString = connectionString;
         }
+        public List<Campaign> ReadAll()
+        {
+            List<Campaign> campaigns = new List<Campaign>();
 
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = CAMPAIGNS_READ_ALL;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Campaign campaign = new Campaign();
+                            campaign = ConvertToModel(dataReader);
+                            campaigns.Add(campaign);
+                        }
+                    }
+                }
+            }
+
+            return campaigns;
+        }
         public Campaign  ReadByUid(Guid campaignUid)
         {
             Campaign campaign = new Campaign();

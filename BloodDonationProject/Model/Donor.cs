@@ -18,7 +18,7 @@ namespace Model
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set;}
         public string Birthday { get; set; }
-
+        
         public BloodType BloodType { get; set; }
 
         public ICollection<CollectionPoint> CollectionPoints { set; get; }

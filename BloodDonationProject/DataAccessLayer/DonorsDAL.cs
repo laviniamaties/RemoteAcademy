@@ -2,23 +2,48 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class DonorsDAL: IDAL, IDonorsDAL
+    public class DonorsDAL: IDAL
     {
         private  string _connectionString ;
         private const string DONORS_READ_BY_GUID = "dbo.BloodDonation_Donors_ReadByGUID";
         private const string DONORS_DELETE_BY_GUID = "dbo.BloodDonation_DonorsDelete";
         private const string DONORS_UPDATE_BY_ID = "dbo.BloodDonation_DonorsUpdate";
         private const string DONORS_CREATE_BY_ID = "dbo.BloodDonation_DonorsCreate";
-       
+        private const string DONORSS_READ_ALL = "dbo.BloodDonation_Donors_ReadAll";
+
         public DonorsDAL(string connectionString)
         {
             _connectionString = connectionString;
+        }
+
+        public List<Donor> ReadAll()
+        {
+            List<Donor> donors = new List<Donor>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = DONORSS_READ_ALL;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Donor donor = new Donor();
+                            donor = ConvertToModel(dataReader);
+                            donors.Add(donor);
+                        }
+                    }
+                }
+            }
+
+            return donors;
         }
 
         public Donor ReadByUid(Guid donorUid)
@@ -74,6 +99,7 @@ namespace DataAccessLayer
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
+                    command.Parameters.Add(new SqlParameter("@BloodTypeID", donor.BloodTypeID));
                     command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
                     command.Parameters.Add(new SqlParameter("@Type", donor.Type));
                     command.Parameters.Add(new SqlParameter("@FirstName", donor.FirstName));
@@ -83,6 +109,7 @@ namespace DataAccessLayer
                     command.Parameters.Add(new SqlParameter("@Country", donor.Country));
                     command.Parameters.Add(new SqlParameter("@PhoneNumber", donor.PhoneNumber));
                     command.Parameters.Add(new SqlParameter("@EmailAddress", donor.EmailAddress));
+                    command.Parameters.Add(new SqlParameter("@Birthday", donor.Birthday));
                     command.CommandText = DONORS_UPDATE_BY_ID;
 
                     command.ExecuteNonQuery();
@@ -133,7 +160,7 @@ namespace DataAccessLayer
             donor.PhoneNumber = dataReader.GetString(dataReader.GetOrdinal("PhoneNumber"));
             donor.EmailAddress = dataReader.GetString(dataReader.GetOrdinal("EmailAddress"));
             donor.Birthday = dataReader.GetString(dataReader.GetOrdinal("Birthday"));
-            // donor.Birthday = dataReader.GetDateTime(dataReader.GetOrdinal("BirthDay"));
+            //donor.Birthday = dataReader.GetDateTime(dataReader.GetOrdinal("BirthDay"));
 
             return donor;
         }
