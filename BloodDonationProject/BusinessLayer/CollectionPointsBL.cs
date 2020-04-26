@@ -30,7 +30,7 @@ namespace BusinessLayer
         {
             _collectionPointsDAL.AddCollectionPoints(id, collectionPoint);
         }
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
             _collectionPointsDAL.DeleteByUid(id);
         }

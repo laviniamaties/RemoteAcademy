@@ -13,28 +13,28 @@ namespace ServicesLayer.Controllers
         [HttpGet]
         public Donor  GetByID(Guid id)
         {
-            return _bLContext.DonorsBL.ReadByUid(id);
+            return _bLContext.Donors.ReadByUid(id);
         }
         [HttpGet]
         public List<Donor> ReadAll()
         {
-            return _bLContext.DonorsBL.ReadAll();
+            return _bLContext.Donors.ReadAll();
         }
 
         [HttpDelete]
         public void DeleteByID(Guid id)
         {
-            _bLContext.DonorsBL.Delete(id);
+            _bLContext.Donors.DeleteById(id);
         }
         [HttpPost]
         public void Insert(Guid id, [FromBody]Donor donor)
         {
-            _bLContext.DonorsBL.Add(id, donor);
+            _bLContext.Donors.Add(id, donor);
         }
         [HttpPut]
         public void Update(Guid id, [FromBody]Donor donor)
         {
-            _bLContext.DonorsBL.Update(id, donor);
+            _bLContext.Donors.Update(id, donor);
         }
     }
 }

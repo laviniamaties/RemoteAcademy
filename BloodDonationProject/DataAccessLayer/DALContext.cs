@@ -17,7 +17,7 @@ namespace DataAccessLayer
         private RegisterCampaignsDAL _registerCampaignsDAL;
         private RegistersDAL _registerDAL;
         
-        public BloodBanksDAL BloodBanksDAL
+        public BloodBanksDAL BloodBanks
         {
             get
             {
@@ -29,7 +29,7 @@ namespace DataAccessLayer
             }
         }
 
-        public BloodTypesDAL BloodTypesDAL
+        public BloodTypesDAL BloodTypes
         {
             get
             {
@@ -41,7 +41,7 @@ namespace DataAccessLayer
             }
         }
 
-        public CampaignsDAL CampaignsDAL
+        public CampaignsDAL Campaigns
         {
             get
             {
@@ -53,7 +53,7 @@ namespace DataAccessLayer
             }
         }
 
-        public CollectionPointsDAL CollectionPointsDAL
+        public CollectionPointsDAL CollectionPoints
         {
             get
             {
@@ -65,7 +65,7 @@ namespace DataAccessLayer
             }
         }
 
-        public DonorsDAL DonorsDAL
+        public DonorsDAL Donors
         {
             get
             {
@@ -77,7 +77,7 @@ namespace DataAccessLayer
             }
         }
 
-        public RegisterCampaignsDAL RegisterCampaignsDAL
+        public RegisterCampaignsDAL RegisterCampaigns
         {
             get
             {
@@ -89,7 +89,7 @@ namespace DataAccessLayer
             }
         }
 
-        public RegistersDAL RegistersDAL
+        public RegistersDAL Registers
         {
             get
             {

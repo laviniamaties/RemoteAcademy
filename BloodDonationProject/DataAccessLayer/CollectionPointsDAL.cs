@@ -139,7 +139,7 @@ namespace DataAccessLayer
         private CollectionPoint ConvertToModel(SqlDataReader dataReader)
         {
             CollectionPoint collectionPoint  = new CollectionPoint();
-            collectionPoint.ID = dataReader.GetGuid(dataReader.GetOrdinal("@ColectionpointID"));
+            collectionPoint.ID = dataReader.GetGuid(dataReader.GetOrdinal("ColectionpointID"));
             collectionPoint.Name = dataReader.GetString(dataReader.GetOrdinal("Name"));
             collectionPoint.Addresse = dataReader.GetString(dataReader.GetOrdinal("Address"));
             collectionPoint.City = dataReader.GetString(dataReader.GetOrdinal("City"));

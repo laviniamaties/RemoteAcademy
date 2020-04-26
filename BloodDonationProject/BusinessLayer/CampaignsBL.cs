@@ -33,7 +33,7 @@ namespace BusinessLayer
         {
             _campaignsDAL.AddCampaign(id, campaign);
         }
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
             _campaignsDAL.DeleteByUid(id);
         }

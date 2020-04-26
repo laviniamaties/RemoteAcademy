@@ -12,18 +12,12 @@ namespace Model
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddresse { get; set; }
-
-        public ICollection<Donor> Donor { get; set; }
-        public ICollection<Campaign> Campaign  { get; set; }
-
-
-
         public Guid BloodBankID { get; set; }
+        public BloodBank BloodBank { get; set; }
+        public virtual ICollection<Register> Registers { set; get; }
+        public virtual ICollection<RegisterCampaign> RegisterCampaigns { set; get; }
 
-        public CollectionPoint()
-        {
-
-        }
+        public CollectionPoint()   {  }
 
         public CollectionPoint( string name, string addresse, string city, string country,
             string phoneNumber, string emailAddresse, Guid bloodBankID)

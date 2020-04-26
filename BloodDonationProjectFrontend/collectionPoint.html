@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Points</title>
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/pointForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+   <!--<script src = "Scripts/collectionPointForm.js"></script>-->
+</head>
+<body class = "formPoint">
+        <form >
+            <div class = "btn btn-primary">
+                <div class = "col-md-3">
+                    <button onclick="location.href='http://localhost:8484/index.html'" 
+                        type="button"> Home 
+                    </button>
+                </div>
+            </div>
+            <div class = "btn btn-primary">
+                <div class = "col-md-3">
+                    <button onclick="location.href='http://localhost:8484/donor.html'" 
+                        type="button"> Donors 
+                    </button>
+                </div>
+            </div>
+            <div class = "btn btn-primary">
+                <div class = "col-md-3">
+                    <button onclick="location.href='http://localhost:8484/collectionPoint.html'" 
+                        type="button"> Points 
+                    </button>
+                </div>
+            </div>
+    
+            <div class = "btn btn-primary">
+                <div class = "col-md-3">
+                    <button onclick="location.href='http://localhost:8484/campaign.html'" 
+                        type="button"> Campaigns 
+                    </button>
+                </div>
+            </div>
+            <div class = "btn btn-primary">
+                <div class = "col-md-3">
+                    <button onclick="location.href='http://localhost:8484/bloodBank.html'" 
+                        type="button"> Banks 
+                    </button>
+                </div>
+            </div>
+
+            <div class = "setTitleForm">
+                <h1> Collection Points</h1>
+            </div>
+            <div>
+                <p> Short description of this page........ This is collection points page :) </p>
+            </div>
+        </form> 
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>                   
+                        <div>
+                            <span class = "col-md-5">  Name :</span><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                            <input type = "text" name ="name" id ="name">            
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Address : </span>
+                            <input type = "text" name = "address" id = "address">
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> City :</span>
+                            <input type = "text" name = "city" id = "city"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Country :</span>
+                            <input type = "text" name = "country" id = "country">  
+                        </div>      
+                        <div>
+                            <span class = "col-md-5"> Email :</span>
+                            <input type = "text" name = "email" id = "email"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Phone : </span>
+                            <input type = "text" name = "phone" id = "phone"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Bank : </span>
+                            <input type = "text" name = "bank" id = "bank">
+                        </div>
+                    </div>
+                    <div>
+                        <input type = "submit" value = "Submit" class = "btn btn-secondary">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="pointsList">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Bank</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/collectionPointForm.js"></script>
+</body>
+</html>

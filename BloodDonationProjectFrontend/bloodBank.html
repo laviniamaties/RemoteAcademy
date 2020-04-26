@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood banks</title>
+    <link rel="stylesheet" type="text/css" href="./Styles/bankForm.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <!--<script src="Scripts/bloodBankForm.js"></script>-->
+</head>
+
+<body class="formBank">
+    <div class="btn btn-primary">
+        <div class="col-md-3">
+            <button onclick="location.href='http://localhost:8484/index.html'" type="button"> Home
+            </button>
+        </div>
+    </div>
+    <div class="btn btn-primary">
+        <div class="col-md-3">
+            <button onclick="location.href='http://localhost:8484/donor.html'" type="button"> Donors
+            </button>
+        </div>
+    </div>
+    <div class="btn btn-primary">
+        <div class="col-md-3">
+            <button onclick="location.href='http://localhost:8484/collectionPoint.html'" type="button"> Points
+            </button>
+        </div>
+    </div>
+
+    <div class="btn btn-primary">
+        <div class="col-md-3">
+            <button onclick="location.href='http://localhost:8484/campaign.html'" type="button"> Campaigns
+            </button>
+        </div>
+    </div>
+    <div class="btn btn-primary">
+        <div class="col-md-3">
+            <button onclick="location.href='http://localhost:8484/bloodBank.html'" type="button"> Banks
+            </button>
+        </div>
+    </div>
+    <div class="setTitleForm">
+        <h1> Blood Banks </h1>
+    </div>
+    <div>
+        <p> Short description of this page........ This is blood banks page :) </p>
+    </div>
+
+    <table>
+        <tr>
+                <td>
+                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                        <div>
+                            <label>Name*</label><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div >
+                            <label> Address : </label>
+                            <input type="text" name="address" id="address">
+                        </div>
+                        <div >
+                            <label> City :</label> 
+                            <input type="text" name="city" id="city">
+                        </div>
+                        <div>
+                            <label> Country :</label>
+                            <input type="text" name="country" id="country">
+                        </div>
+                        
+                        <div >
+                            <label> Phone : </label>
+                            <input type="text" name="phone" id="phone">
+                        </div>
+                        <div>
+                            <label> Email :</label>
+                            <input type="text" name="email" id="email">
+                        </div>
+                        <div class="form-action-buttons">
+                            <input type = "submit" value = "Submit" >
+                        </div>
+                    </form>
+                </td>
+            <td>
+                <table class="list" id="bankList">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/bloodBankForm.js"></script>
+</body>
+
+</html>

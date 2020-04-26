@@ -5,14 +5,14 @@ using System.Data.SqlClient;
 
 namespace DataAccessLayer
 {
-    public class DonorsDAL: IDAL
+    public class DonorsDAL:  IDAL
     {
         private  string _connectionString ;
         private const string DONORS_READ_BY_GUID = "dbo.BloodDonation_Donors_ReadByGUID";
         private const string DONORS_DELETE_BY_GUID = "dbo.BloodDonation_DonorsDelete";
         private const string DONORS_UPDATE_BY_ID = "dbo.BloodDonation_DonorsUpdate";
         private const string DONORS_CREATE_BY_ID = "dbo.BloodDonation_DonorsCreate";
-        private const string DONORSS_READ_ALL = "dbo.BloodDonation_Donors_ReadAll";
+        private const string DONORS_READ_ALL = "dbo.BloodDonation_Donors_ReadAll";
 
         public DonorsDAL(string connectionString)
         {
@@ -30,7 +30,7 @@ namespace DataAccessLayer
                 {
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = DONORSS_READ_ALL;
+                    command.CommandText = DONORS_READ_ALL;
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
@@ -160,8 +160,7 @@ namespace DataAccessLayer
             donor.PhoneNumber = dataReader.GetString(dataReader.GetOrdinal("PhoneNumber"));
             donor.EmailAddress = dataReader.GetString(dataReader.GetOrdinal("EmailAddress"));
             donor.Birthday = dataReader.GetString(dataReader.GetOrdinal("Birthday"));
-            //donor.Birthday = dataReader.GetDateTime(dataReader.GetOrdinal("BirthDay"));
-
+            
             return donor;
         }
     }

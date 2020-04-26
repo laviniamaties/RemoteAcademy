@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Model
 {
-    public  class Donor
+    public  class Donor:  Register
     {
       
         public Guid ID { get; set; }
@@ -18,16 +18,10 @@ namespace Model
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set;}
         public string Birthday { get; set; }
-        
         public BloodType BloodType { get; set; }
+        public virtual ICollection<Register> Registers { set; get; }
 
-        public ICollection<CollectionPoint> CollectionPoints { set; get; }
-
-        public Donor()
-        {
-
-        }
-
+        public Donor(){  }
 
         public Donor(Guid bloodTypeID, string sex , string type, string firstName, string lastName, string address, string city, 
             string country, string phoneNumber, string emailAddress, string birthDay)

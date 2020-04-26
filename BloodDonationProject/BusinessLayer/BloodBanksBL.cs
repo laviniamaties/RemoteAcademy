@@ -33,7 +33,7 @@ namespace BusinessLayer
         {
             _bloodBanksDAL.AddBloodBank(id, bloodBank);
         }
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
             _bloodBanksDAL.DeleteByUid(id);
 

@@ -30,7 +30,7 @@ namespace BusinessLayer
         {
             _donorsDAL.AddDonors(id, donor);
         }
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
             _donorsDAL.DeleteByUid(id);
         }

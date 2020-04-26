@@ -8,6 +8,6 @@ namespace BusinessLayer
 {
     public interface IBL
     {
-        void Delete(Guid id);
+        void DeleteById(Guid id);
     }
 }

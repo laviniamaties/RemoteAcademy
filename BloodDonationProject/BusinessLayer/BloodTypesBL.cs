@@ -31,7 +31,7 @@ namespace BusinessLayer
         {
             _bloodTypesDAL.AddBloodType(id, bloodType);
         }
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
             _bloodTypesDAL.DeleteByUid(id);
         }

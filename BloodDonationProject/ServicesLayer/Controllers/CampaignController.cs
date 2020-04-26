@@ -13,27 +13,27 @@ namespace ServicesLayer.Controllers
         [HttpGet]
         public Campaign GetByID(Guid id)
         {
-            return _bLContext.CampaignsBL.ReadByUid(id);
+            return _bLContext.Campaigns.ReadByUid(id);
         }
         [HttpGet]
         public List<Campaign> ReadALL()
         {
-            return _bLContext.CampaignsBL.ReadAll();
+            return _bLContext.Campaigns.ReadAll();
         }
         [HttpDelete]
-        public void Delete(Guid id)
+        public void DeleteById(Guid id)
         {
-            _bLContext.CampaignsBL.Delete(id);
+            _bLContext.Campaigns.DeleteById(id);
         }
         [HttpPost]
         public void Insert(Guid id, [FromBody]Campaign campaign)
         {
-            _bLContext.CampaignsBL.Add(id, campaign);
+            _bLContext.Campaigns.Add(id, campaign);
         }
         [HttpPut]
         public void Update(Guid id, [FromBody]Campaign campaign)
         {
-            _bLContext.CampaignsBL.Update(id, campaign);
+            _bLContext.Campaigns.Update(id, campaign);
         }
     }
 }
