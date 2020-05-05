@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Points</title>
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/pointForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/collectionPointForm.js"></script>
+</head>
+<body class = "formPoint">
+        <form >
+            <div class = "btn btn-primary">
+                <input type = "button" id= "home" value = "Home">
+            </div>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "donors" value = "Donors">
+            </div>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "points" value = "Points">
+            </div>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "campaigns" value = "Campaigns">
+            </div>
+            <div class = "btn btn-primary"> 
+                <input type = "button" id= "banks" value = "Banks">
+            </div>
+            <div class = "getTitleForm">
+                <h1> Collection Points</h1>
+            </div>
+        </form> 
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmitPoint();" autocomplete="off">
+                    <div>  
+                        <div>
+                            <span class = "col-md-5"> ID : </span>
+                            <input type = "text" name = "IdPoint" id = "idPoint">
+                        </div>                 
+                        <div>
+                            <span class = "col-md-5">  Name :</span><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                            <input type = "text" name ="name" id ="namePoint">            
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Address : </span>
+                            <input type = "text" name = "address" id = "addressPoint">
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> City :</span>
+                            <input type = "text" name = "city" id = "cityPoint"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Country :</span>
+                            <input type = "text" name = "country" id = "countryPoint">  
+                        </div>      
+                        <div>
+                            <span class = "col-md-5"> Email :</span>
+                            <input type = "text" name = "email" id = "emailPoint"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Phone : </span>
+                            <input type = "text" name = "phone" id = "phonePoint"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Bank : </span>
+                            <input type = "text" name = "idBankPoint" id = "idBankPoint">
+                        </div>
+                    </div>
+                    <div>
+                        <input type = "submit" id = "addPointButton" value = "Submit" class = "btn btn-secondary">
+                        <input type = "submit" id = "updatePointButton" value = "Update" class = "btn btn-secondary">
+                        <input type = "submit" id = "deletePointButton" value = "Delete" class = "btn btn-secondary">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="pointsList">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>BankID</th> 
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id = "listOfPoints">
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/CRUDCollectionPointForm.js"></script>
+    <script src="./Scripts/AddCollectionPointForm.js"></script>
+
+</body>
+</html>

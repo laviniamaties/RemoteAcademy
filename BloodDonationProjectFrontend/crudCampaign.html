@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns </title>
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/campaignForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src = "Scripts/campaignForm.js"></script>
+    <script src = "Scripts/AddCampaignForm.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+    <script>
+        $( function() {
+            $( "#startDateCampaign" ).datepicker();
+        } );
+    </script>
+    <script>
+        $( function() {
+            $( "#endDateCampaign" ).datepicker();
+        } );
+    </script>
+</head>
+    <body class = "formCampaign">
+        <form>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "home" value = "Home">
+            </div>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "campaigns" value = "Campaigns">
+            </div>
+        </form>
+        <div class = "getTitleForm">
+            <h1> Campaigns </h1>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <form onsubmit="event.preventDefault();onFormSubmitCampaign();">
+                        <div>   
+                            <div>
+                                <span class = "col-md-5"> ID </span>
+                                <input type = "text" name = "IDCampaign" id = "idCampaign"> 
+                            </div>         
+                            <div>
+                                <span class = "col-md-5">  Name </span>
+                                <label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                                <input type = "text" name = "name" id = "nameCampaign">            
+                            </div>
+                            <div>
+                                <span class = "col-md-5"> Description </span>
+                                <input type = "text" name = "description" id = "descriptionCampaign"> 
+                            </div>
+                            <div>
+                                <span class = "col-md-5"> Start Date </span>
+                                <div>
+                                    <input type = "text" name = "startDate" id = "startDateCampaign">
+                                </div> 
+                            </div>
+                            <div>
+                                <span class = "col-md-5"> End Date </span>
+                                <input type = "text" name = "endDate" id = "endDateCampaign">  
+                            </div>
+                        </div>     
+                        <div>
+                            <input type = "submit"  id = "updateCampaignButton" value = "Update" >
+                            <input type = "submit"  id = "addCampaignButton" value = "Submit" >
+                            <input type = "submit"  id = "deleteCampaignButton" value = "Delete" >
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <table class="list" id="campaignList">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id = "listOfCampaigns">
+    
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <script src="./Scripts/CRUDCampaignForm.js"></script>
+    </body>
+</html>

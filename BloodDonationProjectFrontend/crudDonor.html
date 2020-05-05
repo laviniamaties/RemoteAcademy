@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Page</title>
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/donorForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src = "Scripts/donorForm.js"></script>    
+    <script src = "Scripts/AddDonorForm.js"></script>  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+    <script>
+        $( function() {
+            $( "#birthdayDonor" ).datepicker();
+        } );
+    </script>  
+
+</head>
+<body class = "formDonor">
+    <form >
+        <div class = "btn btn-primary">
+            <input type = "button" id= "home" value = "Home">
+        </div>
+        <div class = "btn btn-primary">
+            <input type = "button" id= "donors" value = "Donors">
+        </div>
+        <div class = "getTitleForm">
+            <h1> Donors </h1>
+        </div>
+    </form> 
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmitDonor();" autocomplete="off">
+                    <div>  
+                        <div>
+                            <span class = "col-md-5"> ID :</span>
+                            <input type = "text" name  = "ID" id = "idDonor"> 
+                        </div>  
+                        <div>
+                            <span class = "col-md-5"> Sex :</span>
+                            <input type = "text" name  = "sexDonor" id = "sexDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Type :</span>
+                            <input type = "text" name = "typeDonor" id = "typeDonor">
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> First Name :</span><label class="validation-error hide" id="fisrtNameValidationError">This field is required.</label>
+                            <input type = "text" name = "firstNameDonor" id = "firstNameDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Last Name :</span>
+                            <input type = "text" name = "lastNameDonor" id = "lastNameDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Address : </span>
+                            <input type = "text" name = "addressDonor" id = "addressDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> City :</span>
+                            <input type = "text" name = "cityDonor" id = "cityDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Country :</span>
+                            <input type = "text" name = "countryDonor" id = "countryDonor">
+                        </div>     
+                        
+                        <div>
+                            <span class = "col-md-5"> Phone : </span>
+                            <input type = "text" name = "phoneDonor" id = "phoneDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Email :</span>
+                            <input type = "text" name = "emailDonor" id = "emailDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> BirthDay : </span>
+                            <input type = "text" name = "birthdayDonor" id = "birthdayDonor"> 
+                        </div>
+                        <div>
+                            <span class = "col-md-5"> Blood Type : </span>
+                            <input type = "text" name = "bloodTypeId" id = "bloodTypeId">         
+                        </div>
+                    </div>     
+                    <div>
+                        <input type = "submit" id = "addDonorButton" value = "Submit " class = "btn btn-secondary">
+                        <input type = "submit" id = "updateDonorButton" value = "Update " class = "btn btn-secondary">
+                        <input type = "submit" id = "deleteDonorButton" value = "Delete " class = "btn btn-secondary">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="donorsList">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sex</th>
+                            <th>Type</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Blood Type</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id= "listOfDonors"> 
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/CRUDDonorForm.js"></script>
+</body>
+</html>

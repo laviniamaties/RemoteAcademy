@@ -89,7 +89,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid donorUid, Donor donor)
+        public void Update( Donor donor)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -98,7 +98,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
+                    command.Parameters.Add(new SqlParameter("@DonorID", donor.ID));
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", donor.BloodTypeID));
                     command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
                     command.Parameters.Add(new SqlParameter("@Type", donor.Type));
@@ -117,7 +117,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddDonors(Guid donorUid, Donor donor )
+        public void AddDonors( Donor donor )
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -126,7 +126,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
+                    command.Parameters.Add(new SqlParameter("@DonorID", donor.ID));
                     command.Parameters.Add(new SqlParameter("@BloodTypeID", donor.BloodTypeID));
                     command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
                     command.Parameters.Add(new SqlParameter("@Type", donor.Type));

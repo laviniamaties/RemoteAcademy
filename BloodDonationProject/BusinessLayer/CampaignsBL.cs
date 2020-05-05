@@ -24,14 +24,14 @@ namespace BusinessLayer
             return _campaignsDAL.ReadByUid(uid);
         }
 
-        public void Update(Guid id, Campaign campaign)
+        public void Update( Campaign campaign)
         {
-            _campaignsDAL.Update(id, campaign);
+            _campaignsDAL.Update( campaign);
         }
 
-        public void Add(Guid id, Campaign campaign)
+        public void Add( Campaign campaign)
         {
-            _campaignsDAL.AddCampaign(id, campaign);
+            _campaignsDAL.AddCampaign(campaign);
         }
         public void DeleteById(Guid id)
         {

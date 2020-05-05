@@ -3,9 +3,11 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ServicesLayer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CampaignController : ApiController
     {
         private BLContext _bLContext = new BLContext();
@@ -20,20 +22,20 @@ namespace ServicesLayer.Controllers
         {
             return _bLContext.Campaigns.ReadAll();
         }
-        [HttpDelete]
+        [HttpPost]
         public void DeleteById(Guid id)
         {
             _bLContext.Campaigns.DeleteById(id);
         }
         [HttpPost]
-        public void Insert(Guid id, [FromBody]Campaign campaign)
+        public void Insert([FromBody]Campaign campaign)
         {
-            _bLContext.Campaigns.Add(id, campaign);
+            _bLContext.Campaigns.Add(campaign);
         }
         [HttpPut]
-        public void Update(Guid id, [FromBody]Campaign campaign)
+        public void Update([FromBody]Campaign campaign)
         {
-            _bLContext.Campaigns.Update(id, campaign);
+            _bLContext.Campaigns.Update( campaign);
         }
     }
 }

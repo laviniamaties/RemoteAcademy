@@ -3,9 +3,11 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ServicesLayer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CollectionPointController : ApiController
     {
         private BLContext _bLContext = new BLContext();
@@ -20,20 +22,20 @@ namespace ServicesLayer.Controllers
         {
             return _bLContext.CollectionPoints.ReadAll();
         }
-        [HttpDelete]
+        [HttpPost]
         public void DeleteById(Guid id)
         {
             _bLContext.CollectionPoints.DeleteById(id);
         }
         [HttpPost]
-        public void Insert(Guid id, [FromBody]CollectionPoint collectionPoint)
+        public void Insert( [FromBody]CollectionPoint collectionPoint)
         {
-            _bLContext.CollectionPoints.Add(id, collectionPoint);
+            _bLContext.CollectionPoints.Add( collectionPoint);
         }
         [HttpPut]
-        public void Update(Guid id, [FromBody]CollectionPoint collectionPoint)
+        public void Update( [FromBody]CollectionPoint collectionPoint)
         {
-            _bLContext.CollectionPoints.Update(id, collectionPoint);
+            _bLContext.CollectionPoints.Update( collectionPoint);
         }
     }
 }

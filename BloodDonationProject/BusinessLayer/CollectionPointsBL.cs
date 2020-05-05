@@ -22,13 +22,13 @@ namespace BusinessLayer
         {
             return _collectionPointsDAL.ReadByUid(uid);
         }
-        public void Update(Guid id, CollectionPoint collectionPoint)
+        public void Update( CollectionPoint collectionPoint)
         {
-            _collectionPointsDAL.Update(id, collectionPoint);
+            _collectionPointsDAL.Update( collectionPoint);
         }
-        public void Add(Guid id, CollectionPoint collectionPoint)
+        public void Add( CollectionPoint collectionPoint)
         {
-            _collectionPointsDAL.AddCollectionPoints(id, collectionPoint);
+            _collectionPointsDAL.AddCollectionPoints(collectionPoint);
         }
         public void DeleteById(Guid id)
         {

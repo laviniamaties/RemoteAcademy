@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood banks</title>
+    <link rel="stylesheet" type="text/css" href="./Styles/viewBloodBank.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/bloodBankForm.js"></script>
+    <script src = "Scripts/AddBloodBankForm.js"></script>
+
+</head>
+
+<body class="formBank">
+    <form>
+        <div class = "btn btn-primary">
+            <input type = "button" id= "home" value = "Home">
+        </div>
+        <div class = "btn btn-primary"> 
+            <input type = "button" id= "banks" value = "Banks">
+        </div>
+    </form>
+    
+        <div class = "getTitleForm">
+            <h1> Blood Banks </h1>
+        </div>
+    <form onsubmit="event.preventDefault();onFormDelete();">
+        <div>
+            <span>ID*</span>
+            <input type="text" name="idBank" id="idBank" >
+            <input type = "submit" id = "deleteBankButton" value = "Delete">
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>
+                <table class="list" id="bankList">
+                    <thead>
+                        <tr>
+                            <th>ID</th> 
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="listOfBanks">
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/CRUDBloodBankForm.js"></script>
+</body>
+
+</html>

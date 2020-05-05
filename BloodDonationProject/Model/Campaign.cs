@@ -14,8 +14,9 @@ namespace Model
 
         public Campaign(){  }
 
-        public Campaign( string name, string description, DateTime startDate, DateTime endDate)
+        public Campaign( Guid id, string name, string description, DateTime startDate, DateTime endDate)
         {
+            ID = id;
             Name = name;
             Description = description;
             StartDate = startDate;

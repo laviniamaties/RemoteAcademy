@@ -88,7 +88,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid collectionPointUid , CollectionPoint collectionPoint )
+        public void Update( CollectionPoint collectionPoint )
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -97,7 +97,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPointUid));
+                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPoint.ID));
                     command.Parameters.Add(new SqlParameter("@BloodBankID", collectionPoint.BloodBankID));
                     command.Parameters.Add(new SqlParameter("@Name", collectionPoint.Name));
                     command.Parameters.Add(new SqlParameter("@Address", collectionPoint.Addresse));
@@ -112,7 +112,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddCollectionPoints(Guid collectionPointUid, CollectionPoint collectionPoint)
+        public void AddCollectionPoints( CollectionPoint collectionPoint)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -121,7 +121,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPointUid));
+                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPoint.ID));
                     command.Parameters.Add(new SqlParameter("@BloodBankID", collectionPoint.BloodBankID));
                     command.Parameters.Add(new SqlParameter("@Name", collectionPoint.Name));
                     command.Parameters.Add(new SqlParameter("@Address", collectionPoint.Addresse));

@@ -91,7 +91,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid bloodBankUid, BloodBank bloodBank)
+        public void Update( BloodBank bloodBank)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -100,7 +100,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBankUid));
+                    command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBank.ID));
                     command.Parameters.Add(new SqlParameter("@Name", bloodBank.Name));
                     command.Parameters.Add(new SqlParameter("@Address", bloodBank.Addresse));
                     command.Parameters.Add(new SqlParameter("@City", bloodBank.City));
@@ -114,7 +114,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddBloodBank(Guid bloodBankUid, BloodBank bloodBank)
+        public void AddBloodBank(BloodBank bloodBank)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -123,7 +123,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBankUid));
+                    command.Parameters.Add(new SqlParameter("@BloodBankID", bloodBank.ID));
                     command.Parameters.Add(new SqlParameter("@Name", bloodBank.Name));
                     command.Parameters.Add(new SqlParameter("@Address", bloodBank.Addresse));
                     command.Parameters.Add(new SqlParameter("@City",bloodBank.City));

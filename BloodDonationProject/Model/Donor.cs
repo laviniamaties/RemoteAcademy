@@ -23,9 +23,10 @@ namespace Model
 
         public Donor(){  }
 
-        public Donor(Guid bloodTypeID, string sex , string type, string firstName, string lastName, string address, string city, 
+        public Donor(Guid id, Guid bloodTypeID, string sex , string type, string firstName, string lastName, string address, string city, 
             string country, string phoneNumber, string emailAddress, string birthDay)
         {
+            ID = id;
             BloodTypeID = bloodTypeID;
             Sex = sex;
             Type = type;

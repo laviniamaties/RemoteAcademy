@@ -15,9 +15,10 @@ namespace Model
 
         public BloodBank(){}
 
-        public BloodBank( string name, string addresse, string city, string country,
+        public BloodBank(Guid id, string name, string addresse, string city, string country,
             string phoneNumber, string emailAddresse)
         {
+            ID = id;
             Name = name;
             Addresse = addresse;
             City = city;

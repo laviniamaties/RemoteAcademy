@@ -6,49 +6,27 @@
     <title>Blood Donation Project</title>
     <link rel = "stylesheet" type ="text/css" href ="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel = "stylesheet" type = "text/css" href = "Styles/indexForm.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/menuForm.js"></script>
 
 </head>
     <body>
-            <div>
-                <h1> Hello </h1>
-            </div>
-
+        <form>
             <div class = "btn btn-primary">
-                <div class = "col-md-3">
-                    <button onclick="location.href='http://localhost:8484/index.html'" 
-                        type="button"> Home 
-                    </button>
-                </div>
+                <input type = "button" id= "home" value = "Home">
             </div>
-
-        <div class = "btn btn-primary">
-            <div class = "col-md-3">
-                <button onclick="location.href='http://localhost:8484/donor.html'" 
-                    type="button"> Donors 
-                </button>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "donors" value = "Donors">
             </div>
-        </div>
-        <div class = "btn btn-primary">
-            <div class = "col-md-3">
-                <button onclick="location.href='http://localhost:8484/collectionPoint.html'" 
-                    type="button"> Points 
-                </button>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "points" value = "Points">
             </div>
-        </div>
-
-        <div class = "btn btn-primary">
-            <div class = "col-md-3">
-                <button onclick="location.href='http://localhost:8484/campaign.html'" 
-                    type="button"> Campaigns 
-                </button>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "campaigns" value = "Campaigns">
             </div>
-        </div>
-        <div class = "btn btn-primary">
-            <div class = "col-md-3">
-                <button onclick="location.href='http://localhost:8484/bloodBank.html'" 
-                    type="button"> Banks 
-                </button>
+            <div class = "btn btn-primary"> 
+                <input type = "button" id= "banks" value = "Banks">
             </div>
-        </div>
+        </form>
     </body>
 </html>

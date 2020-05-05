@@ -6,99 +6,41 @@
     <title>Campaigns </title>
     <link rel = "stylesheet" type = "text/css" href = "./Styles/campaignForm.css">
     <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
-    <!--<script src = "Scripts/campaignForm.js"></script>--> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/campaignForm.js"></script>
+
 </head>
     <body class = "formCampaign">
             <form >
-                <div class = "btn btn-primary">
-                    <div class = "col-md-3">
-                        <button onclick="location.href='http://localhost:8484/index.html'" 
-                            type="button"> Home 
-                        </button>
+                    <div class = "btn btn-primary">
+                        <input type = "button" id= "home" value = "Home">
                     </div>
-                </div>
-                <div class = "btn btn-primary">
-                    <div class = "col-md-3">
-                        <button onclick="location.href='http://localhost:8484/donor.html'" 
-                            type="button"> Donors 
-                        </button>
+                    <div class = "btn btn-primary">
+                        <input type = "button" id= "donors" value = "Donors">
                     </div>
-                </div>
-                <div class = "btn btn-primary">
-                    <div class = "col-md-3">
-                        <button onclick="location.href='http://localhost:8484/collectionPoint.html'" 
-                            type="button"> Points 
-                        </button>
+                    <div class = "btn btn-primary">
+                        <input type = "button" id= "points" value = "Points">
                     </div>
-                </div>
-        
-                <div class = "btn btn-primary">
-                    <div class = "col-md-3">
-                        <button onclick="location.href='http://localhost:8484/campaign.html'" 
-                            type="button"> Campaigns 
-                        </button>
+                    <div class = "btn btn-primary">
+                        <input type = "button" id= "campaigns" value = "Campaigns">
                     </div>
-                </div>
-                <div class = "btn btn-primary">
-                    <div class = "col-md-3">
-                        <button onclick="location.href='http://localhost:8484/bloodBank.html'" 
-                            type="button"> Banks 
-                        </button>
-                    </div>
-                </div>
-                <div class = "setTitleForm">
+                    <div class = "btn btn-primary"> 
+                        <input type = "button" id= "banks" value = "Banks">
+                    </div>            
+                
+                <div class = "getTitleForm">
                     <h1> Campaigns </h1>
                 </div>
                 <div>
                     <p> Short description of this page........ This is campaign page :) </p>
                 </div>
+                <div class = "btn btn-secondary">
+                    <input type = "button" id = "get" value  = "View">
+                </div>
+                <div class = "btn btn-secondary">
+                    <input type = "button" id = "insert" value  = "Add">
+                </div>  
+                
         </form> 
-        <table>
-            <tr>
-                <td>
-                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-                        <div>            
-                            <div>
-                                <span class = "col-md-5">  Name </span>
-                                <label class="validation-error hide" id="nameValidationError">This field is required.</label>
-                                <input type = "text" name = "name" id = "name">            
-                            </div>
-                            <div>
-                                <span class = "col-md-5"> Description </span>
-                                <input type = "text" name = "description" id = "description"> 
-                            </div>
-                            <div>
-                                <span class = "col-md-5"> Start Date </span>
-                                <input type = "text" name = "startDate" id = "startDate"> 
-                            </div>
-                            <div>
-                                <span class = "col-md-5"> End Date </span>
-                                <input type = "text" name = "endDate" id = "endDate">  
-                            </div>
-                        </div>     
-                        <div>
-                            <input type = "submit" value = "Submit" >
-                        </div>
-                    </form>
-                </td>
-                <td>
-                    <table class="list" id="campaignList">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-    
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <script src="./Scripts/campaignForm.js"></script>
     </body>
 </html>

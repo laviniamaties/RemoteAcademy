@@ -22,13 +22,13 @@ namespace BusinessLayer
         {
             return _donorsDAL.ReadAll();
         }
-        public void Update(Guid id, Donor donor)
+        public void Update( Donor donor)
         {
-            _donorsDAL.Update(id, donor);
+            _donorsDAL.Update( donor);
         }
-        public void Add(Guid id, Donor donor)
+        public void Add( Donor donor)
         {
-            _donorsDAL.AddDonors(id, donor);
+            _donorsDAL.AddDonors( donor);
         }
         public void DeleteById(Guid id)
         {

@@ -24,14 +24,14 @@ namespace BusinessLayer
             return _bloodBanksDAL.ReadAll();
         }
 
-        public void Update(Guid id, BloodBank bloodBank)
+        public void Update( BloodBank bloodBank)
         {
-            _bloodBanksDAL.Update(id, bloodBank);
+            _bloodBanksDAL.Update(bloodBank);
         }
 
-        public void Add(Guid id, BloodBank bloodBank)
+        public void Add(BloodBank bloodBank)
         {
-            _bloodBanksDAL.AddBloodBank(id, bloodBank);
+            _bloodBanksDAL.AddBloodBank( bloodBank);
         }
         public void DeleteById(Guid id)
         {

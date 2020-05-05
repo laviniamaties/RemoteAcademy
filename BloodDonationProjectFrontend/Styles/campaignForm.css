@@ -1,4 +1,4 @@
-.setTitleForm{
+.getTitleForm{
     text-align-last: left;
     width: 15;
     height: 10;
@@ -13,18 +13,18 @@ table.list{
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #f8e7e7;
     text-align: left;
     padding: 5px;
 }
 tr:nth-child(even),table.list thead>tr {
-    background-color: #dddddd;
+    background-color: #ddddddde;
 }
 
 input[type=text], input[type=number] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    width: 90%;
+    padding: 5px 10px;
+    margin: 4px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;

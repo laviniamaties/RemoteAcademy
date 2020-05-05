@@ -3,9 +3,11 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ServicesLayer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DonorController : ApiController
     {
         private BLContext _bLContext = new BLContext();
@@ -21,20 +23,20 @@ namespace ServicesLayer.Controllers
             return _bLContext.Donors.ReadAll();
         }
 
-        [HttpDelete]
+        [HttpPost]
         public void DeleteByID(Guid id)
         {
             _bLContext.Donors.DeleteById(id);
         }
         [HttpPost]
-        public void Insert(Guid id, [FromBody]Donor donor)
+        public void Insert([FromBody]Donor donor)
         {
-            _bLContext.Donors.Add(id, donor);
+            _bLContext.Donors.Add( donor);
         }
         [HttpPut]
-        public void Update(Guid id, [FromBody]Donor donor)
+        public void Update( [FromBody]Donor donor)
         {
-            _bLContext.Donors.Update(id, donor);
+            _bLContext.Donors.Update( donor);
         }
     }
 }

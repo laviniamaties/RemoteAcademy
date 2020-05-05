@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood banks</title>
+    <link rel="stylesheet" type="text/css" href="./Styles/bankForm.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/bloodBankForm.js"></script>
+</head>
+
+<body class="formBank">
+    <form>
+        <div class = "btn btn-primary">
+            <input type = "button" id= "home" value = "Home">
+        </div>
+        <div class = "btn btn-primary"> 
+            <input type = "button" id= "banks" value = "Banks">
+        </div>
+    </form>
+    <div class="getTitleForm">
+        <h1> Blood Banks </h1>
+    </div>
+    <table>
+        <tr>
+                <td>
+                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                        <div>
+                            <label>ID*</label>
+                            <div><input type="text" name="idBank" id="idBank" ></div>
+                            
+                        </div>
+                        <div>
+                            <label>Name*</label><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                            <div><input type="text" name="nameBank" id="nameBank"></div>
+                        </div>
+                        <div >
+                            <label> Address : </label>
+                            <div><input type="text" name="address" id="addressBank"></div>
+                        </div>
+                        <div >
+                            <label> City :</label> 
+                            <div><input type="text" name="city" id="cityBank"></div>
+                        </div>
+                        <div>
+                            <label> Country :</label>
+                            <div><input type="text" name="country" id="countryBank"></div>
+                        </div>
+                        
+                        <div >
+                            <label> Phone : </label>
+                            <div><input type="text" name="phone" id="phoneBank"></div>
+                        </div>
+                        <div>
+                            <label> Email :</label>
+                            <div><input type="text" name="email" id="emailBank"></div>
+                        </div>
+                        <div class="form-action-buttons">
+                            <input type = "submit" id = "viewBankButton" value = "View">
+                            <input type = "submit" id = "updateBankButton" value = "Update">
+                            <input type = "submit" id = "addBankButton" value = "Submit">
+                           
+                        </div>
+                    </form>
+                </td>
+        </tr>
+    </table>
+    <script src = "Scripts/bloodBankForm.js"></script>
+    <script src="./Scripts/AddBloodBankForm.js"></script>
+</body>
+</html>

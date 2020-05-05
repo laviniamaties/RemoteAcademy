@@ -87,7 +87,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update(Guid campaignUid, Campaign campaign)
+        public void Update( Campaign campaign)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -96,7 +96,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@CampaignID", campaignUid));
+                    command.Parameters.Add(new SqlParameter("@CampaignID", campaign.ID));
                     command.Parameters.Add(new SqlParameter("@Name", campaign.Name));
                     command.Parameters.Add(new SqlParameter("@Description", campaign.Description));
                     command.Parameters.Add(new SqlParameter("@StartDate", campaign.StartDate));
@@ -108,7 +108,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddCampaign(Guid campaignUid, Campaign campaign)
+        public void AddCampaign( Campaign campaign)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -117,7 +117,7 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@CampaignID", campaignUid));
+                    command.Parameters.Add(new SqlParameter("@CampaignID", campaign.ID));
                     command.Parameters.Add(new SqlParameter("@Name", campaign.Name));
                     command.Parameters.Add(new SqlParameter("@Description", campaign.Description));
                     command.Parameters.Add(new SqlParameter("@StartDate", campaign.StartDate));
