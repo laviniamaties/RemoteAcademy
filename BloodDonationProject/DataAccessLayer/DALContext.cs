@@ -16,7 +16,11 @@ namespace DataAccessLayer
         private DonorsDAL _donorsDAL;
         private RegisterCampaignsDAL _registerCampaignsDAL;
         private RegistersDAL _registerDAL;
-        
+        private ViewPointCampaignDAL _viewPointCampaignDAL ;
+        private ViewDonorPointDAL _viewDonorPointDAL ;
+
+
+
         public BloodBanksDAL BloodBanks
         {
             get
@@ -98,6 +102,30 @@ namespace DataAccessLayer
                     _registerDAL = new RegistersDAL(_connectionString);
                 }
                 return _registerDAL;
+            }
+        }
+
+        public ViewPointCampaignDAL ViewPointCampaign
+        {
+            get
+            {
+                if (_viewPointCampaignDAL == null)
+                {
+                    _viewPointCampaignDAL = new ViewPointCampaignDAL(_connectionString);
+                }
+                return _viewPointCampaignDAL;
+            }
+        }
+
+        public ViewDonorPointDAL ViewDonorPointDAL 
+        {
+            get
+            {
+                if (_viewDonorPointDAL == null)
+                {
+                    _viewDonorPointDAL = new ViewDonorPointDAL(_connectionString);
+                }
+                return _viewDonorPointDAL;
             }
         }
     }

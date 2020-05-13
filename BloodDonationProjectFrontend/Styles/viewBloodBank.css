@@ -12,7 +12,7 @@
 }
 
 .formBank{
-    background-color: antiquewhite;
+    background-color: rgb(235, 252, 230);
 }
 body > table{
     width: 50%;
@@ -71,6 +71,6 @@ label.validation-error{
     margin-left: 5px;
 }
 
-.hide{
+/*.hide{
     display:none;
-}
+}*/

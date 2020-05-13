@@ -22,6 +22,16 @@ namespace ServicesLayer.Controllers
         {
             return _bLContext.Donors.ReadAll();
         }
+        [HttpGet]
+        public List<Donor> ReadAllDonors()
+        {
+            return _bLContext.Donors.ReadAllDonors();
+        }
+        [HttpGet]
+        public List<Donor> ReadAllPacients()
+        {
+            return _bLContext.Donors.ReadAllPacients();
+        }
 
         [HttpPost]
         public void DeleteByID(Guid id)

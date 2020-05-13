@@ -1,28 +1,39 @@
-
 window.onload = function(){
     registerEventsPage();
 }
 
+function _executeGetCall(){
+    this._donorService.SetUrl('Donor/ReadAll')
+}
+
 function registerEventsPage(){
     $("#home").on("click", function(){
-        loadHomePage();
+        window.location.href= 'http://localhost:8484/index.html';
     });
     $("#donors").on("click", function(){
-        loadDonorsPage();
+        window.location.href = 'http://localhost:8484/donor.html';
     });
     $("#points").on("click", function(){
-        loadPointPage();
+        window.location.href = 'http://localhost:8484/collectionPoint.html';
     });
     $("#campaigns").on("click", function(){
-        loadCampaignsPage();
+        window.location.href= 'http://localhost:8484/campaign.html';
     });
     $("#banks").on("click", function(){
-        loadBanksPage();
+        window.location.href = 'http://localhost:8484/bloodBank.html';
     });
 
     $("#get").on("click", function(){
-        loadCRUDDonorsPage();
+        loadViewDonorsPage();
+        _executeGetCall.call(this);
     });
+    $("#showDonorButton").on("click", function(){
+        loadShowDonorsPage();
+    });
+    $("#showPacientButton").on("click", function(){
+        loadShowPacientsPage();
+    });
+
     $("#insert").on("click", function(){
         loadCRUDDonorsPage();
     });
@@ -32,26 +43,20 @@ function registerEventsPage(){
     $("#delete").on("click", function(){
         loadCRUDDonorsPage();
     });
+    $("#choosePoint").on("click", function(){
+        window.location.href= 'http://localhost:8484/showDonorPoint.html';
+    })
 }
 
 function loadCRUDDonorsPage(){
     window.location.href= 'http://localhost:8484/crudDonor.html';
 }
-function loadCampaignsPage(){
-    window.location.href= 'http://localhost:8484/campaign.html';
+function loadViewDonorsPage(){
+    window.location.href= 'http://localhost:8484/viewDonor.html';
 }
-
-function loadHomePage(){
-    window.location.href= 'http://localhost:8484/index.html';
+function loadShowDonorsPage(){
+    window.location.href= 'http://localhost:8484/viewDonorsPage.html';
 }
-
-function loadPointPage(){
-    window.location.href = 'http://localhost:8484/collectionPoint.html';
-}
-
-function loadDonorsPage(){
-    window.location.href = 'http://localhost:8484/donor.html';
-}
-function loadBanksPage(){
-    window.location.href = 'http://localhost:8484/bloodBank.html';
+function loadShowPacientsPage(){
+    window.location.href= 'http://localhost:8484/viewPacientsPage.html';
 }

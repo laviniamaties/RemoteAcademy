@@ -1,23 +1,22 @@
-
 window.onload = function(){
-    registerEventsPage();
+    registerPageEvents();
 }
 
-function registerEventsPage(){
+function registerPageEvents(){
     $("#home").on("click", function(){
-        loadHomePage();
-    });
-    $("#donors").on("click", function(){
-        loadDonorsPage();
-    });
-    $("#points").on("click", function(){
-        loadPointPage();
-    });
-    $("#campaigns").on("click", function(){
-        loadCampaignsPage();
+        window.location.href= 'http://localhost:8484/index.html';
     });
     $("#banks").on("click", function(){
-        loadBanksPage();
+        window.location.href = 'http://localhost:8484/bloodBank.html';
+    });
+    $("#donors").on("click", function(){
+        window.location.href = 'http://localhost:8484/donor.html';
+    });
+    $("#points").on("click", function(){
+        window.location.href = 'http://localhost:8484/collectionPoint.html';
+    });
+    $("#campaigns").on("click", function(){
+        window.location.href= 'http://localhost:8484/campaign.html';
     });
 
     $("#viewBankButton").on("click", function(){
@@ -39,22 +38,4 @@ function loadCRUDBanksPage(){
 }
 function loadViewAllBanksPage(){
     window.location.href= 'http://localhost:8484/viewBloodBank.html';
-}
-function loadCampaignsPage(){
-    window.location.href= 'http://localhost:8484/campaign.html';
-}
-
-function loadHomePage(){
-    window.location.href= 'http://localhost:8484/index.html';
-}
-
-function loadPointPage(){
-    window.location.href = 'http://localhost:8484/collectionPoint.html';
-}
-
-function loadDonorsPage(){
-    window.location.href = 'http://localhost:8484/donor.html';
-}
-function loadBanksPage(){
-    window.location.href = 'http://localhost:8484/bloodBank.html';
 }

@@ -22,6 +22,12 @@ namespace ServicesLayer.Controllers
         {
             return _bLContext.Campaigns.ReadAll();
         }
+        [HttpGet]
+        public List<Campaign> ShowActiveCampaign()
+        {
+            return _bLContext.Campaigns.ShowActiveCampaigns();
+        }
+
         [HttpPost]
         public void DeleteById(Guid id)
         {

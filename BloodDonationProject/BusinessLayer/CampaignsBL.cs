@@ -19,6 +19,12 @@ namespace BusinessLayer
             return _campaignsDAL.ReadAll();
         }
 
+        public List<Campaign> ShowActiveCampaigns()
+        {
+            return _campaignsDAL.ShowActiveCampaigns();
+        }
+
+
         public Campaign ReadByUid(Guid uid)
         {
             return _campaignsDAL.ReadByUid(uid);

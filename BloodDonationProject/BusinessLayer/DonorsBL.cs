@@ -22,9 +22,19 @@ namespace BusinessLayer
         {
             return _donorsDAL.ReadAll();
         }
+
+        public List<Donor> ReadAllDonors()
+        {
+            return _donorsDAL.ReadAllDonors();
+        }
+
+        public List<Donor> ReadAllPacients()
+        {
+            return _donorsDAL.ReadAllPacients();
+        }
         public void Update( Donor donor)
         {
-            _donorsDAL.Update( donor);
+            _donorsDAL.Update(  donor);
         }
         public void Add( Donor donor)
         {

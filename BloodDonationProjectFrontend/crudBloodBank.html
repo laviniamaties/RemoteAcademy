@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood banks</title>
-    <link rel="stylesheet" type="text/css" href="./Styles/bankForm.css">
+    <link rel="stylesheet" type="text/css" href="./Styles/viewBloodBank.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./Scripts/AddBloodBankForm.js"></script>
+    <script src = "Scripts/menuForm.js"></script>
     <script src = "Scripts/bloodBankForm.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+
 </head>
 
 <body class="formBank">
@@ -23,17 +29,17 @@
     <div class="getTitleForm">
         <h1> Blood Banks </h1>
     </div>
-    <table>
-        <tr>
+        <table>
+            <tr>
                 <td>
-                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <form onsubmit="event.preventDefault();registerButtonEventsBank();" autocomplete="off">
                         <div>
-                            <label>ID*</label>
+                            <label>ID</label>
                             <div><input type="text" name="idBank" id="idBank" ></div>
                             
                         </div>
                         <div>
-                            <label>Name*</label><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                            <label>Name</label>
                             <div><input type="text" name="nameBank" id="nameBank"></div>
                         </div>
                         <div >
@@ -65,9 +71,7 @@
                         </div>
                     </form>
                 </td>
-        </tr>
-    </table>
-    <script src = "Scripts/bloodBankForm.js"></script>
-    <script src="./Scripts/AddBloodBankForm.js"></script>
-</body>
+            </tr>
+        </table>
+    </body>
 </html>

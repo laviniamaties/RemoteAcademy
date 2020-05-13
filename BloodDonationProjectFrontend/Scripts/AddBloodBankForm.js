@@ -1,4 +1,5 @@
-function onFormSubmit() {
+
+function registerButtonEventsBank() {
     $("#addBankButton").on("click", function(){
         handleInsert();
     });
@@ -6,36 +7,56 @@ function onFormSubmit() {
         handleUpdate();
     });
 }
-function onFormDelete(){
-    $("#deleteBankButton").on("click", function(){
-        handleDelete();
-    });
+
+function getBankModel(){
+    return {
+
+        ID : $("#idBank").val(),
+        Name : $("#nameBank").val(),
+        Addresse : $("#addressBank").val(),
+        City : $("#cityBank").val(),
+        Country : $("#countryBank").val(),
+        PhoneNumber : $("#phoneBank").val(),
+        EmailAddresse : $("#emailBank").val()
+    }
 }
 
-function handleInsert(){
-    var id = $("#idBank").val();
-    var name = $("#nameBank").val();
-    var address = $("#addressBank").val();
-    var city = $("#cityBank").val();
-    var country = $("#countryBank").val();
-    var phone = $("#phoneBank").val();
-    var email = $("#emailBank").val();
+function isValid(){
 
-    var bankData = {
-        ID : id,
-        Name : name, 
-        Addresse : address,
-        City : city,
-        Country : country, 
-        PhoneNumber : phone, 
-        EmailAddresse : email
+    if($("#nameBank").val() == "") {
+        return false;
     }
+      if($("#address").val() == "") {
+        return false;
+    }
+    if($("#city").val() == "") {
+        return false;
+    }
+    if($("#country").val() == "") {
+        return false;
+    }
+    if($("#phoneBank").val() == "") {
+        return false;
+    }
+    if($("#emailBank").val() == "") {
+        return false;
+    }
+    return true;
+  }
 
+function handleInsert(){
+    var bankData = getBankModel();
+    var isValidData = isValid();
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
+    }
+    
     $.when(sendBanksData(bankData)).then(function(){
-        alert("yey");
+        alert("Successfully!");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }
@@ -54,28 +75,19 @@ function sendBanksData(data){
 
 function handleUpdate() {
  
-    var id = $("#idBank").val();
-    var name = $("#nameBank").val();
-    var address = $("#addressBank").val();
-    var city = $("#cityBank").val();
-    var country = $("#countryBank").val();
-    var phone = $("#phoneBank").val();
-    var email = $("#emailBank").val();
+    var bankData = getBankModel();
+    var bankData = getBankModel();
+    var isValidData = isValid();
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
+    }    
 
-    var bankData = {
-        ID : id,
-        Name : name, 
-        Addresse : address,
-        City : city,
-        Country : country, 
-        PhoneNumber : phone, 
-        EmailAddresse : email
-    }
     $.when(updateBankData(bankData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }
@@ -92,32 +104,3 @@ function updateBankData(data){
     return promise;
 }
 
-//delete
-function handleDelete() {
- 
-    var id = $("#idBank").val();
-    var bankData = {
-        ID : id
-    }
-
-    $.when(deleteBankData(bankData)).then(function(){
-        alert("yey");
-        location.reload();
-    }).fail(function(){
-        alert("no :(");
-    });
-
-}
-
-function deleteBankData(data){
-    var Id = $("#idBank").val();
-    let promise = $.ajax({
-        type:'POST',
-        url:"https://localhost:44331/api/BloodBank/DeleteById?ID=" + Id,
-        contentType: 'application/json',
-        dataType: 'json',
-        accept: 'application/json',
-    });
-    return promise;
-
-}

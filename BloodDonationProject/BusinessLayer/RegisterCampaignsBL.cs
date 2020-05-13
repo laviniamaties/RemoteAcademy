@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using Model;
 using System;
 
 namespace BusinessLayer
@@ -17,9 +18,9 @@ namespace BusinessLayer
             _registerCampaignsDAL.Update(idCampaign, idPoint);
         }
 
-        public void Add(Guid idCampaign, Guid idPoint)
+        public void Add(RegisterCampaign registerCampaign)
         {
-            _registerCampaignsDAL.Update(idCampaign, idPoint);
+            _registerCampaignsDAL.Add(registerCampaign);
         }
     }
 }

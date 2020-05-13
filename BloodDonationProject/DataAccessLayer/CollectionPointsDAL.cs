@@ -139,6 +139,7 @@ namespace DataAccessLayer
         private CollectionPoint ConvertToModel(SqlDataReader dataReader)
         {
             CollectionPoint collectionPoint  = new CollectionPoint();
+
             collectionPoint.ID = dataReader.GetGuid(dataReader.GetOrdinal("ColectionpointID"));
             collectionPoint.Name = dataReader.GetString(dataReader.GetOrdinal("Name"));
             collectionPoint.Addresse = dataReader.GetString(dataReader.GetOrdinal("Address"));
@@ -146,6 +147,8 @@ namespace DataAccessLayer
             collectionPoint.Country = dataReader.GetString(dataReader.GetOrdinal("Country"));
             collectionPoint.PhoneNumber = dataReader.GetString(dataReader.GetOrdinal("PhoneNumber"));
             collectionPoint.EmailAddresse = dataReader.GetString(dataReader.GetOrdinal("EmailAddress"));
+            collectionPoint.BloodBankID = dataReader.GetGuid(dataReader.GetOrdinal("BloodBankID"));
+            collectionPoint.BankName = dataReader.GetString(dataReader.GetOrdinal("BankName"));
 
             return collectionPoint;
         }

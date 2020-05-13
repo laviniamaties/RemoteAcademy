@@ -3,6 +3,20 @@
     margin-left: 13px;
 
 }
+.column {
+    float: right;
+    width: 50%;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.list{
+    text-align: center;
+}
 
 .getTitleForm{
     text-align-last: left;
@@ -12,7 +26,10 @@
 }
 
 .formDonor{
-    background-color: antiquewhite;
+    /*background-color: rgb(223, 250, 215);*/
+    background-image: url("../Images/donors1.jpg");
+    background-repeat: no-repeat;
+    background-size: 1500px 655px;
 }
 
 table.list{
@@ -50,7 +67,7 @@ input[type=submit]{
 }
 
 form div.form-action-buttons{
-    text-align: right;
+    text-align: center;
 }
 
 a{

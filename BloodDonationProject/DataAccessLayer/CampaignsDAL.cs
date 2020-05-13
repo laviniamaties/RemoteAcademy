@@ -13,6 +13,8 @@ namespace DataAccessLayer
         private const string CAMPAIGN_DELETE_BY_ID = "dbo.BloodDonation_CampaignsDelete";
         private const string CAMPAIGN_UPDATE_BY_ID = "dbo.BloodDonation_CampaignsUpdate";
         private const string CAMPAIGN_CREATE_BY_ID = "dbo.BloodDonation_CampaignsCreate";
+        private const string CAMPAIGN_SHOW_ACTVE_CAMPAIGNS = "dbo.BloodDonation_Campaigns_ShowActiveCampaign";
+
 
         public CampaignsDAL(string connectionString)
         {
@@ -44,6 +46,34 @@ namespace DataAccessLayer
 
             return campaigns;
         }
+
+        public List<Campaign> ShowActiveCampaigns()
+        {
+            List<Campaign> campaigns = new List<Campaign>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = CAMPAIGN_SHOW_ACTVE_CAMPAIGNS;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Campaign campaign = new Campaign();
+                            campaign = ConvertToModel(dataReader);
+                            campaigns.Add(campaign);
+                        }
+                    }
+                }
+            }
+
+            return campaigns;
+        }
+
         public Campaign  ReadByUid(Guid campaignUid)
         {
             Campaign campaign = new Campaign();

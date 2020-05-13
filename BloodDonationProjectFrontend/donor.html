@@ -7,10 +7,19 @@
     <link rel = "stylesheet" type = "text/css" href = "./Styles/donorForm.css">
     <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/menuForm.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
      <script src = "Scripts/donorForm.js"></script> 
+
 </head>
 <body class = "formDonor">
-    <form >
+    <form id = "contentForm">
+        <div id = "headerDonor">
+
+        </div>
+        <div id = "contentDivDonor">
+
+        </div>
             <div class = "btn btn-primary">
                 <input type = "button" id= "home" value = "Home">
             </div>
@@ -31,15 +40,17 @@
                 <h1> Donors </h1>
             </div>
         </div>
-        <div>
-            <p> Short description of this page........ This is donors page :) </p>
-        </div>
-        <div class = "btn btn-secondary">
-            <input type = "button" id = "get" value  = "View">
-        </div>
-        <div class = "btn btn-secondary">
-            <input type = "button" id = "insert" value  = "Add">
-        </div>
+        <div class="row">
+            <div class="column">
+                <div class = "btn btn-secondary">
+                    <input type = "button" id = "get" value  = "View">
+                </div>
+                <div class = "btn btn-secondary">
+                    <input type = "button" id = "insert" value  = "Add">
+                </div>
+            </div>
+            <div class="column">
+            </div>
     </form> 
 </body>
 </html>

@@ -7,7 +7,7 @@ namespace Model
     {
         public Guid ID { get; set; }
         public string Type { get; set; }
-        public List<Donor> Donors { get; set; }
+        public virtual Donor Donor { get; set; }
 
         public BloodType() {}
         public BloodType(Guid id, string type)

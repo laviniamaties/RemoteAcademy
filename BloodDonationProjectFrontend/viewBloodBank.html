@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" href="./Styles/viewBloodBank.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
     <script src = "Scripts/bloodBankForm.js"></script>
-    <script src = "Scripts/AddBloodBankForm.js"></script>
-
+    <script src = "Scripts/menuForm.js"></script>
 </head>
 
 <body class="formBank">
@@ -26,7 +26,7 @@
         <div class = "getTitleForm">
             <h1> Blood Banks </h1>
         </div>
-    <form onsubmit="event.preventDefault();onFormDelete();">
+    <form onsubmit="event.preventDefault();registerButtonEventsBankDelete();">
         <div>
             <span>ID*</span>
             <input type="text" name="idBank" id="idBank" >
@@ -58,5 +58,4 @@
     </table>
     <script src="./Scripts/CRUDBloodBankForm.js"></script>
 </body>
-
 </html>

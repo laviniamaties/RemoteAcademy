@@ -13,14 +13,13 @@ namespace Model
         public string PhoneNumber { get; set; }
         public string EmailAddresse { get; set; }
         public Guid BloodBankID { get; set; }
-        public BloodBank BloodBank { get; set; }
-        public virtual ICollection<Register> Registers { set; get; }
-        public virtual ICollection<RegisterCampaign> RegisterCampaigns { set; get; }
-
+        public string BankName { get; set; }
+        public virtual BloodBank BloodBank { get; set; }
+       
         public CollectionPoint()   {  }
 
         public CollectionPoint(Guid id, string name, string addresse, string city, string country,
-            string phoneNumber, string emailAddresse, Guid bloodBankID)
+            string phoneNumber, string emailAddresse, Guid bloodBankID, string bankName)
         {
             ID = id;
             Name = name;
@@ -30,6 +29,7 @@ namespace Model
             PhoneNumber = phoneNumber;
             EmailAddresse = emailAddresse;
             BloodBankID = bloodBankID;
+            BankName = bankName;
 
         }
 

@@ -77,16 +77,16 @@ EXECUTE dbo.[BloodDonation_CollectionPointsCreate]  @CollectionpointID,
 -- 6. CREATE [BloodDonation_RegistersCreate]
 
 DECLARE 
-		@DonorID uniqueidentifier = 'A38AE9F7-2D8E-46FB-A192-0960FD241154',
-		@ColectionPointID uniqueidentifier ='4BA1B967-AB8B-4BF7-AFDD-5D1D6F89CAAF'
+		@DonorID uniqueidentifier = 'e15ecfc0-3aee-4397-8dc9-2858a9656721	',
+		@ColectionPointID uniqueidentifier ='feee68f0-9856-435f-b31e-09ee6f6fc0c7	'
 	
 EXECUTE dbo.[BloodDonation_RegistersCreate]   @DonorID  ,
 	   @ColectionPointID
 
 -- 7. CREATE [BloodDonation_RegisterCampaignsCreate]
 DECLARE 
-		@ColectionPointID uniqueidentifier ='2E8E56C0-2CC8-4652-AA0C-493926883749' ,
-		@CampaignID uniqueidentifier = 'C948309E-8B9B-46F7-A910-70BD22778A74' 
+		@ColectionPointID uniqueidentifier ='f2747e89-2787-46ea-87c4-652fcbffafb3' ,
+		@CampaignID uniqueidentifier = '60ba1784-fa6e-4198-8332-4bbd1711af5e	' 
 	
 EXECUTE dbo.[BloodDonation_RegisterCampaignsCreate]  @CampaignID ,
 	    @ColectionPointID
@@ -274,3 +274,13 @@ EXECUTE dbo.BloodDonation_CollectionPoints_ReadAll
 EXECUTE dbo.BloodDonation_Campaigns_ReadAll
 -- 5. BloodDonation_BloodBank_ReadAll
 EXECUTE dbo.BloodDonation_BloodBank_ReadAll
+
+
+EXECUTE dbo.BloodDonation_Donors_ReadAllDonors
+EXECUTE dbo.BloodDonation_Donors_ReadAllPacients
+
+exec BloodDonation_Campaigns_ShowActiveCampaign;
+exec BloodDonation_Campaigns_ShowPointCampaign;
+exec  dbo.BloodDonation_ShowDonorPoint;
+
+

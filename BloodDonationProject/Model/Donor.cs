@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
-    public  class Donor:  Register
+    public  class Donor
     {
       
         public Guid ID { get; set; }
-        public Guid BloodTypeID { get; set; }
+        
         public string Sex { get; set; }
         public string Type { get; set; }
         public string FirstName { get; set; }
@@ -18,16 +19,23 @@ namespace Model
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set;}
         public string Birthday { get; set; }
-        public BloodType BloodType { get; set; }
-        public virtual ICollection<Register> Registers { set; get; }
+        public Guid BloodTypeID { get; set; }
+        public string BloodType { get; set; }
 
-        public Donor(){  }
+        public virtual BloodType BloodTypes { get; set; }
+        //public IList<BloodType> BloodTypes { get; set; }
+        //public virtual ICollection<BloodType> BloodTypes { get; set; }
+        //public virtual ICollection<Register> Registers { set; get; }
 
-        public Donor(Guid id, Guid bloodTypeID, string sex , string type, string firstName, string lastName, string address, string city, 
-            string country, string phoneNumber, string emailAddress, string birthDay)
+        public Donor(){
+   
+        }
+
+        public Donor(Guid id, BloodType bloodTypeID,  string sex , string type, string firstName, string lastName, string address, string city, 
+            string country, string phoneNumber, string emailAddress, string birthDay, string bloodType)
         {
             ID = id;
-            BloodTypeID = bloodTypeID;
+            BloodTypes =  bloodTypeID;
             Sex = sex;
             Type = type;
             FirstName = firstName;
@@ -38,7 +46,9 @@ namespace Model
             PhoneNumber = phoneNumber;
             EmailAddress = emailAddress;
             Birthday = birthDay;
-            
+            BloodType = bloodType;
+
+
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DataAccessLayer
@@ -13,6 +14,9 @@ namespace DataAccessLayer
         private const string DONORS_UPDATE_BY_ID = "dbo.BloodDonation_DonorsUpdate";
         private const string DONORS_CREATE_BY_ID = "dbo.BloodDonation_DonorsCreate";
         private const string DONORS_READ_ALL = "dbo.BloodDonation_Donors_ReadAll";
+        private const string DONORS_READ_ALL_DONORS = "dbo.BloodDonation_Donors_ReadAllDonors";
+        private const string DONORS_READ_ALL_PACIENTS = "dbo.BloodDonation_Donors_ReadAllPacients";
+
 
         public DonorsDAL(string connectionString)
         {
@@ -31,6 +35,60 @@ namespace DataAccessLayer
                     command.Connection = connection;
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.CommandText = DONORS_READ_ALL;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Donor donor = new Donor();
+                            donor = ConvertToModel(dataReader);
+                            donors.Add(donor);
+                        }
+                    }
+                }
+            }
+
+            return donors;
+        }
+
+        public List<Donor> ReadAllDonors()
+        {
+            List<Donor> donors = new List<Donor>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = DONORS_READ_ALL_DONORS;
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Donor donor = new Donor();
+                            donor = ConvertToModel(dataReader);
+                            donors.Add(donor);
+                        }
+                    }
+                }
+            }
+
+            return donors;
+        }
+
+        public List<Donor> ReadAllPacients()
+        {
+            List<Donor> donors = new List<Donor>();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = DONORS_READ_ALL_PACIENTS;
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
@@ -89,13 +147,13 @@ namespace DataAccessLayer
             }
         }
 
-        public void Update( Donor donor)
+        public void Update(Donor donor)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand())
-                {
+                {                    
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
                     command.Parameters.Add(new SqlParameter("@DonorID", donor.ID));
@@ -126,8 +184,8 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@DonorID", donor.ID));
-                    command.Parameters.Add(new SqlParameter("@BloodTypeID", donor.BloodTypeID));
+                    command.Parameters.Add(new SqlParameter("@DonorID", donor.ID));        
+                    command.Parameters.Add(new SqlParameter("@BloodTypeID", donor.BloodTypeID));                     
                     command.Parameters.Add(new SqlParameter("@Sex", donor.Sex));
                     command.Parameters.Add(new SqlParameter("@Type", donor.Type));
                     command.Parameters.Add(new SqlParameter("@FirstName", donor.FirstName));
@@ -160,7 +218,9 @@ namespace DataAccessLayer
             donor.PhoneNumber = dataReader.GetString(dataReader.GetOrdinal("PhoneNumber"));
             donor.EmailAddress = dataReader.GetString(dataReader.GetOrdinal("EmailAddress"));
             donor.Birthday = dataReader.GetString(dataReader.GetOrdinal("Birthday"));
-            
+            donor.BloodTypeID = dataReader.GetGuid(dataReader.GetOrdinal("BloodTypeID"));
+            donor.BloodType = dataReader.GetString(dataReader.GetOrdinal("BloodType"));
+
             return donor;
         }
     }

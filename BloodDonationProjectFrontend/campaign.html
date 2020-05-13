@@ -7,11 +7,18 @@
     <link rel = "stylesheet" type = "text/css" href = "./Styles/campaignForm.css">
     <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
     <script src = "Scripts/campaignForm.js"></script>
 
 </head>
     <body class = "formCampaign">
             <form >
+                    <div id = "headerCampaign">
+
+                    </div>
+                    <div id = "contentDivCampaign">
+
+                    </div>
                     <div class = "btn btn-primary">
                         <input type = "button" id= "home" value = "Home">
                     </div>
@@ -31,11 +38,8 @@
                 <div class = "getTitleForm">
                     <h1> Campaigns </h1>
                 </div>
-                <div>
-                    <p> Short description of this page........ This is campaign page :) </p>
-                </div>
                 <div class = "btn btn-secondary">
-                    <input type = "button" id = "get" value  = "View">
+                    <input type = "button" id = "get" value  = "Active Campaigns">
                 </div>
                 <div class = "btn btn-secondary">
                     <input type = "button" id = "insert" value  = "Add">

@@ -1,4 +1,5 @@
-function onFormSubmitCampaign() {
+
+function registerButtonEventsCamp(){
     $("#addCampaignButton").on("click", function(){
        handleInsert();
     });
@@ -10,27 +11,50 @@ function onFormSubmitCampaign() {
     });
 }
 
+function getCampaignModel(){
+    return {
+        ID : $("#idCampaign").val(),
+         Name : $("#nameCampaign").val(),
+         Description : $("#descriptionCampaign").val(),
+         StartDate : $("#startDateCampaign").val(),
+         EndDate : $("#endDateCampaign").val()
+
+    }
+}
+
+function isValid(){
+
+    if($("#idCampaign").val() == "") {
+      return false;
+    }
+    if($("#nameCampaign").val() == "") {
+        return false;
+    }
+      if($("#descriptionCampaign").val() == "") {
+        return false;
+    }
+    if($("#startDateCampaign").val() == "") {
+        return false;
+    }
+    if($("#endDateCampaign").val() == "") {
+        return false;
+    }
+    return true;
+  }
+
 function handleInsert(){
-
-    var id = $("#idCampaign").val();
-    var name = $("#nameCampaign").val();
-    var description = $("#descriptionCampaign").val();
-    var startDate = $("#startDateCampaign").val();
-    var endDate = $("#endDateCampaign").val();
-
-    var campaignData = {
-        ID : id,
-        Name : name, 
-        Description : description,
-        StartDate : startDate,
-        EndDate : endDate
+    var campaignData = getCampaignModel();
+    var isValidData = isValid();   
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
     }
 
     $.when(sendCampaignData(campaignData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }
@@ -49,25 +73,18 @@ function sendCampaignData(data){
 
 function handleUpdate() {
  
-    var id = $("#idCampaign").val();
-    var name = $("#nameCampaign").val();
-    var description = $("#descriptionCampaign").val();
-    var startDate = $("#startDateCampaign").val();
-    var endDate = $("#endDateCampaign").val();
-
-    var campaignData = {
-        ID : id,
-        Name : name, 
-        Description : description,
-        StartDate : startDate,
-        EndDate : endDate
+    var campaignData = getCampaignModel();
+    var isValidData = isValid();   
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
     }
 
     $.when(updateCampaignData(campaignData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }
@@ -94,10 +111,10 @@ function handleDelete() {
     }
 
     $.when(deleteCampaignData(campaignData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Data.SqlClient;
 
 
@@ -34,7 +35,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Add(Guid donorUid, Guid collectionPointUid)
+        public void Add(Register register)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -43,8 +44,8 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@DonorID", donorUid));
-                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPointUid));
+                    command.Parameters.Add(new SqlParameter("@DonorID", register.DonorId));
+                    command.Parameters.Add(new SqlParameter("@ColectionPointID", register.CollectionPointId));
       
                     command.CommandText = REGISTERS_CREATE_BY_ID;
 

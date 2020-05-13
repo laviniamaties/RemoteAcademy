@@ -6,3 +6,5 @@ F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\obj\Debug\DataAccessLayer.
 F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\bin\Debug\Newtonsoft.Json.dll
+F:\RemoteAcademy\BloodDonationProject\DataAccessLayer\bin\Debug\Newtonsoft.Json.xml

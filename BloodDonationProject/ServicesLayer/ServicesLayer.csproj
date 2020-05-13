@@ -290,6 +290,10 @@
     <Compile Include="Controllers\CampaignController.cs" />
     <Compile Include="Controllers\CollectionPointController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
+    <Compile Include="Controllers\RegisterCampaignsController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ViewDonorPointController.cs" />
+    <Compile Include="Controllers\ViewPointCampaignController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

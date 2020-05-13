@@ -12,6 +12,10 @@ namespace BusinessLayer
         private DonorsBL _donorsBL;
         private RegisterCampaignsBL _registerCampaignsBL;
         private RegistersBL _registersBL;
+        private ViewPointCampaignBL _viewPointCampaignBL ;
+        private ViewDonorPointBL _viewDonorPointBL;
+
+
 
         public BloodBanksBL BloodBanks
         {
@@ -72,7 +76,7 @@ namespace BusinessLayer
                 return _donorsBL;
             }
         }
-        public RegisterCampaignsBL RegisterCampaignsBL
+        public RegisterCampaignsBL RegisterCampaigns
         {
             get
             {
@@ -95,5 +99,30 @@ namespace BusinessLayer
                 return _registersBL;
             }
         }
+
+        public ViewPointCampaignBL ViewPointCampaign
+        {
+            get
+            {
+                if (_viewPointCampaignBL == null)
+                {
+                    _viewPointCampaignBL = new ViewPointCampaignBL(_dalContext.ViewPointCampaign);
+                }
+                return _viewPointCampaignBL;
+            }
+        }
+
+        public ViewDonorPointBL ViewDonorPointBL
+        {
+            get
+            {
+                if(_viewDonorPointBL == null)
+                {
+                    _viewDonorPointBL = new ViewDonorPointBL(_dalContext.ViewDonorPointDAL);
+                }
+                return _viewDonorPointBL;
+            }
+        }
+
     }
 }

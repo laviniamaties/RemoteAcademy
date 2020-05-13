@@ -3,3 +3,9 @@
     margin-left: 13px;
     font-weight: bold;
 }
+
+body{
+    background-image: url("../Images/bloodDonation.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 1500px 655px;
+}

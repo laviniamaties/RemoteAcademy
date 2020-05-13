@@ -609,6 +609,27 @@ BEGIN
 	END
 GO
 
+CREATE PROCEDURE dbo.BloodDonation_Donors_ReadAllDonors
+
+AS
+BEGIN
+
+	SELECT *
+	FROM Donors 
+	WHERE Type = 'Donor'
+	END
+GO
+
+CREATE PROCEDURE dbo.BloodDonation_Donors_ReadAllPacients
+
+AS
+BEGIN
+
+	SELECT *
+	FROM Donors 
+	WHERE Type = 'Pacient'
+	END
+GO
 
 CREATE PROCEDURE dbo.BloodDonation_CollectionPoints_ReadAll
 
@@ -639,4 +660,46 @@ BEGIN
 		
 	END
 GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_Campaigns_ShowActiveCampaign
+
+AS
+BEGIN
+	SELECT  * 
+	FROM Campaigns  
+	WHERE EndDate > GETDATE()
+	END
+GO
+
+
+CREATE PROCEDURE dbo.BloodDonation_Campaigns_ShowPointCampaign
+
+AS
+BEGIN
+	SELECT * 
+	FROM Campaigns c 
+	INNER JOIN RegisterCampaigns rc 
+	ON c.CampaignID = rc.CampaignID
+	INNER JOIN ColectionPoints cp
+	ON rc.ColectionPointID = cp.ColectionPointID
+END
+
+
+CREATE PROCEDURE dbo.BloodDonation_ShowDonorPoint
+
+AS
+BEGIN
+	SELECT d.DonorID, cp.ColectionPointID, d.FirstName, d.LastName, d.Type, d.BirthDay,
+			cp.Name PointName, cp.Address as PointAddresse, cp.City as PintCity, cp.Country as PointCpuntry,
+			cp.EmailAddress as PointEmail, cp.PhoneNumber as PointNumber
+	FROM Donors d
+	INNER JOIN Registers r 
+	ON  d.DonorID = r.DonorID
+	INNER JOIN ColectionPoints cp
+	ON cp.ColectionPointID = r.ColectionPointID
+	ORDER BY d.DonorID, cp.ColectionPointID, d.FirstName, d.LastName, d.Type, d.BirthDay,
+			cp.Name, cp.Address, cp.City, cp.Country, cp.EmailAddress, cp.PhoneNumber
+END
+
 

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campaigns </title>
-    <link rel = "stylesheet" type = "text/css" href = "./Styles/campaignForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/viewCampaign.css">
     <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
     <script src = "Scripts/campaignForm.js"></script>
-    <script src = "Scripts/AddCampaignForm.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>           
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
     <script>
@@ -22,6 +23,7 @@
             $( "#endDateCampaign" ).datepicker();
         } );
     </script>
+    
 </head>
     <body class = "formCampaign">
         <form>
@@ -31,6 +33,9 @@
             <div class = "btn btn-primary">
                 <input type = "button" id= "campaigns" value = "Campaigns">
             </div>
+            <div class = "btn btn-dark">                
+                <input type = "button" id= "choosePoint" value = "Choose Point">
+            </div>
         </form>
         <div class = "getTitleForm">
             <h1> Campaigns </h1>
@@ -38,7 +43,7 @@
         <table>
             <tr>
                 <td>
-                    <form onsubmit="event.preventDefault();onFormSubmitCampaign();">
+                    <form onsubmit="event.preventDefault();registerButtonEventsCamp();" autocomplete="off">
                         <div>   
                             <div>
                                 <span class = "col-md-5"> ID </span>
@@ -90,7 +95,7 @@
                 </td>
             </tr>
         </table>
-        
         <script src="./Scripts/CRUDCampaignForm.js"></script>
+        <script src = "Scripts/AddCampaignForm.js"></script>
     </body>
 </html>

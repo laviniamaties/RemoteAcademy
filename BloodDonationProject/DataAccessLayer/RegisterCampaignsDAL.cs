@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Data.SqlClient;
 
 
@@ -8,7 +9,7 @@ namespace DataAccessLayer
     {
         private  string _connectionString ;
         private const string REGISTER_CAMPAIGNS_UPDATE_BY_ID = "dbo.BloodDonation_RegisterCampaignsUpdate";
-        private const string REGISTER_CAMPAIGNS_CREATE_BY_ID = "dbo.BloodDonation_RegisterCampaignsCreate";
+        private const string REGISTER_CAMPAIGNS_CREATE = "dbo.BloodDonation_RegisterCampaignsCreate";
 
         public RegisterCampaignsDAL(string connectionString)
         {
@@ -35,7 +36,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Add(Guid campaignUid , Guid collectionPointUid)
+        public void Add( RegisterCampaign registerCampaign)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -44,10 +45,9 @@ namespace DataAccessLayer
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Connection = connection;
-                    command.Parameters.Add(new SqlParameter("@ColectionPointID", collectionPointUid));
-                    command.Parameters.Add(new SqlParameter("@CampaignID", campaignUid));
-
-                    command.CommandText = REGISTER_CAMPAIGNS_CREATE_BY_ID;
+                    command.Parameters.Add(new SqlParameter("@CampaignID", registerCampaign.CampaignId));
+                    command.Parameters.Add(new SqlParameter("@ColectionPointID", registerCampaign.CollectionPointId));
+                    command.CommandText = REGISTER_CAMPAIGNS_CREATE;
 
                     command.ExecuteNonQuery();
                 }

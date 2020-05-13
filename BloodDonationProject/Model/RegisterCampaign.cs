@@ -10,5 +10,11 @@ namespace Model
         public virtual CollectionPoint CollectionPoint { get; set; }
         public RegisterCampaign() { }
 
+        public RegisterCampaign(Guid campaignId, Guid pointID)
+        {
+            CampaignId = campaignId;
+            CollectionPointId = pointID;
+        }
+
     }
 }

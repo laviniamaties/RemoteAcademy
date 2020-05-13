@@ -7,7 +7,10 @@
 }
 
 .formPoint{
-    background-color: antiquewhite;
+    /*background-color: antiquewhite;*/
+    background-image: url("../Images/colpoint.jpg");
+    background-repeat: no-repeat;
+    background-size: 1500px 655px;
 }
 table.list{
     width:80%;

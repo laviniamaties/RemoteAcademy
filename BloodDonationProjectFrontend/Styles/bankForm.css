@@ -12,8 +12,12 @@
 }
 
 .formBank{
-    background-color: antiquewhite;
+    /*background-color: antiquewhite;*/
+    background-image: url("../Images/bloodBank.gif");
+    background-repeat: no-repeat;
+    background-size: 1500px 655px;
 }
+
 body > table{
     width: 50%;
 }

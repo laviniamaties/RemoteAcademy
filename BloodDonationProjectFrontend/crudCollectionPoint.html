@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collection Points</title>
-    <link rel = "stylesheet" type = "text/css" href = "./Styles/pointForm.css">
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/viewPoints.css">
     <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
     <script src = "Scripts/collectionPointForm.js"></script>
 </head>
 <body class = "formPoint">
@@ -15,21 +16,16 @@
                 <input type = "button" id= "home" value = "Home">
             </div>
             <div class = "btn btn-primary">
-                <input type = "button" id= "donors" value = "Donors">
-            </div>
-            <div class = "btn btn-primary">
                 <input type = "button" id= "points" value = "Points">
             </div>
-            <div class = "btn btn-primary">
-                <input type = "button" id= "campaigns" value = "Campaigns">
+            <div class = "col-md-5">
+                <div class = "getTitleForm">
+                    <h1> Collection Points</h1>
+                </div>
             </div>
-            <div class = "btn btn-primary"> 
-                <input type = "button" id= "banks" value = "Banks">
-            </div>
-            <div class = "getTitleForm">
-                <h1> Collection Points</h1>
-            </div>
+            
         </form> 
+        
     <table>
         <tr>
             <td>
@@ -56,13 +52,14 @@
                             <input type = "text" name = "country" id = "countryPoint">  
                         </div>      
                         <div>
-                            <span class = "col-md-5"> Email :</span>
-                            <input type = "text" name = "email" id = "emailPoint"> 
-                        </div>
-                        <div>
                             <span class = "col-md-5"> Phone : </span>
                             <input type = "text" name = "phone" id = "phonePoint"> 
                         </div>
+                        <div>
+                            <span class = "col-md-5"> Email :</span>
+                            <input type = "text" name = "email" id = "emailPoint"> 
+                        </div>
+                        
                         <div>
                             <span class = "col-md-5"> Bank : </span>
                             <input type = "text" name = "idBankPoint" id = "idBankPoint">

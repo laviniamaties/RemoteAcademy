@@ -1,0 +1,84 @@
+.donorFormDiv{
+    font-weight: bold;
+    margin-left: 13px;
+
+}
+.column {
+    float: right;
+    width: 50%;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.list{
+    text-align: center;
+}
+
+.getTitleForm{
+    text-align-last: left;
+    width: 15;
+    height: 10;
+    color: brown;
+}
+
+.formDonor{
+    background-color: rgb(235, 252, 230);
+}
+
+table.list{
+    width:80%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 2px;
+}
+tr:nth-child(even),table.list thead>tr {
+    background-color: #dddddd;
+}
+
+input[type=text], input[type=number] {
+    width: 90%;
+    padding: 5px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input[type=submit]{
+    width: 30%;
+    background-color: #ddd;
+    color: #000;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form div.form-action-buttons{
+    text-align: center;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-right: 4px;
+}
+
+label.validation-error{
+    color:   red;
+    margin-left: 5px;
+}
+
+.hide{
+    display:none;
+}

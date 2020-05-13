@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns </title>
+    <link rel = "stylesheet" type = "text/css" href = "./Styles/viewCampaign.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
+    <script src = "Scripts/campaignForm.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>           
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+        
+</head>
+    <body class = "formCampaign">
+        <form>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "home" value = "Home">
+            </div>
+            <div class = "btn btn-primary">
+                <input type = "button" id= "donors" value = "Donors">
+            </div>
+        </form>
+        <div class = "getTitleForm">
+            <h1> Choose point for Donor </h1>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <form onsubmit="event.preventDefault();registerButtonEventsChooseDonorPoint();" autocomplete="off">
+                        <div>   
+                            <div>
+                                <span class = "col-md-5"> Donor </span>
+                                <input type = "text" name = "idDonorRegister" id = "idDonorRegister"> 
+                            </div>         
+                            <div>
+                                <span class = "col-md-5">  Point </span>
+                                <input type = "text" name = "idPointRegister" id = "idPointRegister">            
+                            </div>
+                        <div>
+                            <input type = "submit"  id = "addDonorPoint" value = "Submit" >
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <table class="list" id="donorPoint">
+                        <thead>
+                            <tr>
+                                <th>Donor Fisrt Name</th>
+                                <th>Donor Last Name </th>    
+                                <th>Donor Type</th>
+                                <th>Donor Birthday</th>
+                                <th>Point Name </th>
+                                <th>Point Addresse</th>
+                                <th>Point City</th>
+                                <th>Point Country</th>
+                                <th>Point Email</th>
+                                <th>Point Phone</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id = "listOfPointsDonor">
+    
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <script src = "Scripts/ChooseDonorPointForm.js"></script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Page</title>
+    <link rel = "stylesheet" type = "text/css" href = "Styles/viewDonorPage.css">
+    <link rel = "stylesheet" type = "text/css" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src = "Scripts/ConvertJsonToModel.js"></script>
+    <script src = "Scripts/donorForm.js"></script>    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" temp_src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+    <script>
+        $( function() {
+            $( "#birthdayDonor" ).datepicker();
+        } );
+    </script>  
+
+</head>
+<body class = "formDonor">
+    <form >
+        <div class = "btn btn-primary">
+            <input type = "button" id= "home" value = "Home">
+        </div>
+        <div class = "btn btn-primary">
+            <input type = "button" id= "donors" value = "Donors">
+        </div>
+        <div class = "getTitleForm">
+            <h1> Donors </h1>
+        </div>
+        <div class = "btn btn-secondary">
+            <input type = "button" id = "get" value  = "View all">
+        </div>
+    </form> 
+    <table>
+        <tr>
+            <td>
+                <table class="list" id="donorsList">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sex</th>
+                            <th>Type</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Blood Type</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id= "listOfDonors"> 
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="./Scripts/ViewDonorsPage.js"></script>
+</body>
+</html>

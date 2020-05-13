@@ -9,6 +9,66 @@ function onFormSubmitPoint() {
         handleDelete();
     });
 }
+
+function GetPointModel(){
+    return {
+        ID : $("#idPoint").val(),
+        Name : $("#namePoint").val(), 
+        Addresse : $("#addressPoint").val(),
+        City : $("#cityPoint").val(),
+        Country : $("#countryPoint").val(),
+        PhoneNumber: $("#phonePoint").val(),
+        EmailAddresse: $("#emailPoint").val(),
+        BloodBankID: $("#idBankPoint").val()
+    }
+}
+
+function isValid(){
+
+    if($("#idPoint").val() == "") {
+      return false;
+    }
+    if($("#namePoint").val() == "") {
+        return false;
+    }
+      if($("#addressPoint").val() == "") {
+        return false;
+    }
+    if($("#cityPoint").val() == "") {
+        return false;
+    }
+    if($("#countryPoint").val() == "") {
+        return false;
+    }
+    if($("#phonePoint").val() == "") {
+        return false;
+    }
+    if($("#emailPoint").val() == "") {
+        return false;
+    }
+    if($("#idBankPoint").val() == "") {
+        return false;
+    }
+    return true;
+  }
+
+function handleInsert(){
+
+    var pointData = GetPointModel();
+    var isValidData = isValid();   
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
+    }
+
+    $.when(sendPointData(pointData)).then(function(){
+        alert("Successfully");
+        location.reload();
+    }).fail(function(){
+        alert("Something goes wrong!");
+    });
+
+}
 //insert
 function sendPointData(data){
     let promise = $.ajax({
@@ -24,33 +84,19 @@ function sendPointData(data){
 //update
 function handleUpdate() {
  
-    var id = $("#idPoint").val();
-    var name = $("#namePoint").val();
-    var addresse = $("#addressPoint").val();
-    var city = $("#cityPoint").val();
-    var country = $("#countryPoint").val();
-    var email = $("#emailPoint").val();
-    var phone = $("#phonePoint").val();
-    var idBankPoint = $("#idBankPoint").val();
-
-    var pointData = {
-        ID : id,
-        Name : name, 
-        Addresse : addresse,
-        City : city,
-        Country : country,
-        PhoneNumber: phone,
-        EmailAddresse: email,
-        BloodBankID: idBankPoint
+    var pointData = GetPointModel();
+    var isValidData = isValid();   
+    if (isValidData == false){
+        alert("Sorry, some fields are empty!");
+        return false;
     }
 
     $.when(updatePointData(pointData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
-
 }
 
 function updatePointData(data){
@@ -76,10 +122,10 @@ function handleDelete() {
     }
 
     $.when(deletePointData(pointData)).then(function(){
-        alert("yey");
+        alert("Successfully");
         location.reload();
     }).fail(function(){
-        alert("no :(");
+        alert("Something goes wrong!");
     });
 
 }
